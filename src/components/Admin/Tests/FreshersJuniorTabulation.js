@@ -59,7 +59,7 @@ function FreshersJuniorTabulation() {
                         <td>{item.reasoning_score}</td>
                         <td>
                             <button onClick={()=>{navigate('/studentChart',{state:item})
-                            handleUpdate(item)}}
+                            handleUpdate(item)}} style={{padding:'3px',width:'60px'}}
                              >
                                 View
                             </button>

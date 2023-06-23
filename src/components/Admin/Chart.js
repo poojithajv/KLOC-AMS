@@ -7,6 +7,7 @@ import Button from 'react-bootstrap/button'
 import { useReactToPrint } from "react-to-print";
 import { useLocation } from 'react-router-dom';
 import { PieChart, Pie, Cell, Tooltip, Legend } from "recharts"
+import './index.css'
 function Chart() {
   const detailsPdf = useRef();
     const location=useLocation()
@@ -122,9 +123,9 @@ function Chart() {
     }
     
   return (
-    <div style={{padding:'20px',display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'center'}}>
-      <div ref={detailsPdf} style={{display:'flex',justifyContent:'space-between',alignItems:'center',border:'1px solid black',borderRadius:'16px',width:'750px',padding:'20px'}}>
-        <div style={{display:'flex',flexDirection:'column',width:'500px'}}>
+    <div  className="chart-container" >
+      <div ref={detailsPdf} className="charts">
+        <div className='details'>
         <h1 style={{fontSize:'25px',fontWeight:'bold'}}>Student Details:</h1>
         <p>Name : {data.Name}</p>
         <p>Email : {data.Email_Address}</p>
@@ -132,7 +133,7 @@ function Chart() {
         <p>{data.aptitude_score!==undefined ? `Aptitude Score : ${data.aptitude_score}` : `Java Score : ${data.fullstack_java_score}`}</p>
         <p>{data.technical_score!==undefined ? `Technical Score :  ${data.technical_score}` : (data.reasoning_score!==undefined ? `Reasoning Score : ${data.reasoning_score}` : `React Score : ${data.fullstack_react_score}`) }</p>
         </div>
-      <div >
+      <div className='piechart'>
         <PieChart width={730} height={300}>
           <Pie
             data={pieData}
@@ -160,7 +161,7 @@ function Chart() {
       <button type='button' style={{backgroundColor:'orange',color:'white',padding:'10px',border:'none',fontSize:'15px',marginRight:'20px'}} onClick={generatePdf} >
         Download
       </button>
-      <button style={{backgroundColor:'blue',color:'white',padding:'10px',border:'none',fontSize:'15px',marginRight:'20px'}} onClick={()=> sendMail(data)}>Send Email</button>
+      <button style={{backgroundColor:'blue',color:'white',padding:'10px',border:'none',fontSize:'15px',marginRight:'20px'}} onClick={()=> sendMail(data)} className='send'>Send Email</button>
       </div>
         <Modal 
         show={isOpen} 

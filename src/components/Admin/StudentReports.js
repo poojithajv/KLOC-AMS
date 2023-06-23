@@ -90,7 +90,7 @@ function StudentReports() {
           <button style={{marginLeft:'20px',padding:'2px',width:'60px'}} onClick={handleFilter}>Filter</button>
         </div>
       </div>
-      <div style={{width:'800px',marginLeft:'40px'}}>
+      <div style={{width:'800px',marginLeft:'100px'}}>
         {filteredData.length >0  ? <table border="2px">
             <thead >
                 <tr>
@@ -125,7 +125,7 @@ function StudentReports() {
                         <td>{item.reasoning_score===undefined ? 'NA' : item.reasoning_score}</td>
                         <td>{item.testType}</td>
                         <td>
-                            <button onClick={()=>navigate('/studentChart',{state:item})} >
+                            <button onClick={()=>navigate('/studentChart',{state:item})} style={{padding:'3px',width:'60px'}} >
                                 View
                             </button>
                         </td>

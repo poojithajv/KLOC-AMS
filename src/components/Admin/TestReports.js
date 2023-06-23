@@ -20,7 +20,7 @@ const TestReports = () => {
   console.log(data.datat)
   const testDetails = [
     {
-      name: "Fresher QA Test",
+      name: "QA Test",
       id: "fresher_qa_test",
       url: "https://www.fitaacademy.in/includes/assets/img/blog/software-testing.jpg",
       data:data.datat.qaData
@@ -32,25 +32,25 @@ const TestReports = () => {
       data:data.datat.fullStackData
     },
     {
-      name: "Fresher Python Test",
+      name: "Python Test",
       id: "fresher_python_test",
       url: "https://st3.myideasoft.com/idea/ct/82/myassets/blogs/python-ne-icin-kullanilir.jpg",
       data:data.datat.pythonData
     },
     {
-      name: "Fresher Java Test",
+      name: "Java Test",
       id: "fresher_java_test",
       url: "https://i0.wp.com/www.techbooky.com/wp-content/uploads/2019/10/java-logo.png",
       data:data.datat.javaData
     },
     {
-      name: "Fresher Test",
+      name: "Freshers Test",
       id: "fresher_test",
       url: "https://img.freepik.com/premium-vector/man-with-laptop-studying-working-concept_113065-167.jpg",
       data:data.datat.fresherData
     },
     {
-      name: "Frontend Freshers Assessment",
+      name: "Frontend Fresher Test",
       id: "frontend_fresher_test",
       url: "https://staticlearn.shine.com/l/m/images/blog/Front--end-developer.png",
       data:data.datat.frontEndFresherData
@@ -62,19 +62,19 @@ const TestReports = () => {
       data:data.datat.shopifyData
     },
     {
-      name: "MERN Developer - Junior",
+      name: "MERN Developer Junior Test",
       id: "mern_developer_junior",
       url: "https://www.technology4u.in/wp-content/uploads/2021/07/epv55hgtsfi8csprpj9u.jpg",
       data:data.datat.mernDeveloperJuniorData
     },
     {
-      name: "MERN Developer - Intermediate",
+      name: "MERN Developer Intermediate Test",
       id: "mern_developer_intermediate",
       url: "https://www.bigscal.com/wp-content/uploads/2022/09/Features-of-Mern-stack-development-services-You-Should-Know.png",
       data:data.datat.mernDeveloperIntermediateData
     },
     {
-      name:'Freshers Junior',
+      name:'Freshers Junior Test',
       id:"freshers_junior_test",
       url:'https://play-lh.googleusercontent.com/8HEJdrLd48HwrAzlRva8xjG1wxCuu0VUd9ML6ySw76q-lBD0AeWofbNZqYPrjWSCgf8=w240-h480-rw',
       data:data.datat.freshersJuniorData

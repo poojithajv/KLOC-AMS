@@ -54,7 +54,6 @@
   align-items: center;
 }
 
-<<<<<<< HEAD
 .not-found-container {
   display: flex;
   flex-direction: column;
@@ -126,8 +125,6 @@
 
 /*Assessement container styles*/
 
-=======
->>>>>>> 14d899ffc2b72724caa4b51fa41e51a93cd91059
 .assessment-container {
   background-color: rgb(231, 230, 230);
   padding: 20px;
@@ -228,7 +225,7 @@ input::-webkit-inner-spin-button {
   flex-wrap: wrap;
 }
 
-@media(max-width:"768px") {
+@media screen and (max-width:840px) {
   .dashboard_chart_container{
     display: flex;
     align-items: center;

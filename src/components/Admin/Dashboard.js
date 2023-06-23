@@ -356,15 +356,15 @@ const Dashboard = () => {
         </div>
        <div>
        <button style={{backgroundColor:"#aed25d" ,height:"20px",width:"40px",border:"none"}}></button>
-       <span>Apptitude__correct_answers_Percentage</span> ; 
+       <span>Apptitude</span>  
        <button style={{backgroundColor:"#6f6fed" ,height:"20px",width:"40px",border:"none",marginLeft:"10px"}}></button>
-        <span>Technical_correct_answers_Percentage</span>;
+        <span>Technical</span>
         <button style={{backgroundColor:"#9f93ed" ,height:"20px",width:"40px",border:"none",marginLeft:"10px"}}></button>
-        <span>FresherJunior_Reasioning_correct_answers_Percentage</span><br></br>;
+        <span>Reasioning</span><br></br>;
         <button style={{backgroundColor:"#468f0a" ,height:"20px",width:"40px",border:"none",marginLeft:"10px"}}></button>
-        <span>Fullstack_Java_Correct_Answers_Percentage</span>;
+        <span>Java</span>
         <button style={{backgroundColor:"#4d71bd" ,height:"20px",width:"40px",border:"none",marginLeft:"10px"}}></button>
-        <span>Fullstack_React_Correct_Answeres_Percentage</span>
+        <span>react</span>
        </div>
         <div className="dashboard_chart_container">
        

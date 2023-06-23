@@ -21,9 +21,7 @@ const EachCandidateInputField = ({ onInputChange }) => {
   }, [inputValues]); // Empty dependency array to run the effect only once when the component mounts
   console.log(inputValues);
   return (
-    <div className="container">
       <div className="bg-each-candidate-field">
-        {/* <PersonPinIcon className="input-field" /> */}
         <TextField
           id="outlined-basic-1"
           label="name"
@@ -61,36 +59,7 @@ const EachCandidateInputField = ({ onInputChange }) => {
           required
         />
         <hr />
-        {/* <TextField
-          id="standard-basic-2"
-          label="Email"
-          variant="standard"
-          className="input-field"
-          value={inputValues.email}
-          onChange={(e) => handleInputChange("email", e.target.value)}
-          required
-        /> */}
-        {/* <TextField
-          id="standard-basic-3"
-          label="Phone"
-          variant="standard"
-          className="input-field"
-          value={inputValues.phone}
-          onChange={(e) => handleInputChange("phone", e.target.value)}
-          required
-        /> */}
-        {/* <TextField
-          id="standard-basic-4"
-          type="date"
-          label=""
-          variant="standard"
-          className="input-field"
-          value={inputValues.endDate}
-          onChange={(e) => handleInputChange("endDate", e.target.value)}
-          required
-        /> */}
       </div>
-    </div>
   );
 };
 export default EachCandidateInputField;

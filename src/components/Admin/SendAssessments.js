@@ -140,7 +140,7 @@ const Assessment = () => {
     setProceedingStatus(false)
   };
   return (
-    <div style={{width:'100%', height:'100%'}}>
+    <div className="send-assessment-main-container">
       <div className="admin-header-container">
       <div className="admin-header-logo-container">
               <img src="https://res.cloudinary.com/dufx8zalt/image/upload/v1687419355/logoimage1_krvkbq.png" alt="logo" style={{height:'50px', width:'100px', borderRadius:'10px'}} onClick={()=>navigate('/')}/>
@@ -200,7 +200,7 @@ const Assessment = () => {
             Proceed
           </Button>
         </div>
-        {proceedingStatus ? <div className="each-input-student-details-div">
+        {proceedingStatus ? <div className="each-input-student-details-container">
           {proceeding &&
             Array.from({ length: studentCount }, (_, index) => (
               <EachCandidateInputField

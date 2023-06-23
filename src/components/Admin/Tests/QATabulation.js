@@ -36,7 +36,7 @@ function QATest() {
                         <td>{item.technical_score}</td>
                         <td>
                             <button onClick={()=>navigate('/studentChart',{state:item})
-                            } >
+                            } style={{padding:'3px',width:'60px'}}>
                                 View
                             </button>
                         </td>

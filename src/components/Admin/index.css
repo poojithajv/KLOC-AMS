@@ -246,6 +246,7 @@ input::-webkit-inner-spin-button {
   font-size:18px;
     margin-right:20px;
     font-weight:bold;
+    margin-top: 8px;
 }
 
 .admin-header-login{
@@ -253,6 +254,7 @@ input::-webkit-inner-spin-button {
   color:white;
   font-weight:bold;
   font-size:18px;
+  margin-top: 8px;
 }
 
 @media (max-width:768px){
@@ -275,4 +277,68 @@ input::-webkit-inner-spin-button {
     color:#1d1a69;
     list-style-type:none;
 }
+}
+.charts{
+  display: flex;
+  padding:20px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 16px;
+  width:750px;
+}
+
+.details{
+  display: flex;
+  flex-direction: column;
+  width:300px;
+}
+.piechart{
+  margin-left: 0px;
+}
+.chart-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+@media screen and (max-width:1279px){
+  .chart-container{
+    padding-left: 170px;
+  }
+}
+@media screen and (max-width:768px){
+  .charts{
+    display: flex;
+    flex-direction: column;
+    width:400px;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+  }
+  .details{
+    text-align: center;
+  }
+}
+@media screen and (max-width:767px){
+  .chart-container{
+    margin-left: 100px;
+  }
+}
+@media screen and (max-width:600px){
+  .chart-container{
+    margin-left: 160px;
+  }
+}
+@media screen and (max-width:300px){
+  .chart-container{
+    margin-left: 260px;
+  }
+}
+@media screen and (max-width:768px){
+  .send{
+    width:100px;
+  }
 }

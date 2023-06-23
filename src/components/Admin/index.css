@@ -54,73 +54,6 @@
   align-items: center;
 }
 
-.not-found-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-}
-.not-found-img {
-  height: 300px;
-  width: 300px;
-}
-
-.home-page-btn {
-  font-family: "Roboto";
-  font-weight: 600;
-  font-size: 10px;
-  padding: 8px 16px;
-  color: #ffffff;
-  background-color: #3b82f6;
-  border: none;
-  border-radius: 4px;
-  margin-left: 14px;
-  cursor: pointer;
-  outline: none;
-}
-
-.no-found-heading {
-  font-family: "Roboto";
-  font-weight: bold;
-  font-size: 30px;
-  color: #989898;
-}
-
-.dashboard_chart_container{
-  display: flex;
-  align-items:start;
-  flex-wrap: wrap;
-}
-
-@media(max-width:"768px") {
-  .dashboard_chart_container{
-    display: flex;
-    align-items: center;
-    justify-content:center;
-    
-  }
-}
-
-.dashboard_chart{
-  margin-left: 0px;
-  width: "40%";
-  height: "400px";
-}
-
-
-/*Send Assessements Component Styles*/
-
-.send-assessment-main-container{
-  width:100%;
-  height:100%;
-  padding:0px;
-  padding-right:0px;
-  padding-left:0px;
-}
-
-/*Assessement container styles*/
-
 .assessment-container {
   background-color: rgb(231, 230, 230);
   padding: 20px;
@@ -169,6 +102,72 @@
   width:100px;
 }
 
+.not-found-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+.not-found-img {
+  height: 300px;
+  width: 300px;
+}
+
+.home-page-btn {
+  font-family: "Roboto";
+  font-weight: 600;
+  font-size: 10px;
+  padding: 8px 16px;
+  color: #ffffff;
+  background-color: #3b82f6;
+  border: none;
+  border-radius: 4px;
+  margin-left: 14px;
+  cursor: pointer;
+  outline: none;
+}
+
+.no-found-heading {
+  font-family: "Roboto";
+  font-weight: bold;
+  font-size: 30px;
+  color: #989898;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+/* input[type="number"] {
+  -moz-appearance: textfield;
+} */
+.send-assessment-container {
+  background-color: #EDFEFF;
+  min-height: 100vh;
+}
+
+.dashboard_chart_container{
+  display: flex;
+  align-items:start;
+  flex-wrap: wrap;
+}
+
+@media(max-width:"768px") {
+  .dashboard_chart_container{
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    
+  }
+}
+
+.dashboard_chart{
+  margin-left: 0px;
+  width: "40%";
+  height: "400px";
+}
 
 
 @media (max-width:768px){
@@ -209,14 +208,6 @@
     width:50px;
   }
 }
-
-@media (max-width:280px){
-  .assessmentContainerCheckboxContainer{
-    width:70%;
-  }
-}
-
-/*Assessement container styles*/
 
 /* Admin Header*/
 
@@ -285,170 +276,73 @@
 .admin-mobile-hamburger-menu{
     color:#1d1a69;
     list-style-type:none;
-}
-}
-
-/* Admin Header*/
-
-/*Each Candidate Input Field Styles*/
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-/* Firefox */
-/* input[type="number"] {
-  -moz-appearance: textfield;
-} */
-.each-input-student-details-container{
-  padding:20px;
-  width:100%;
-}
-
-.custom-input-field{
-  border:1px solid rgb(201, 200, 200);
-  border-radius:3px;
-}
-
-input[type="date"]{ 
-  border:1px solid rgb(201, 200, 200);
-  border-radius:3px;
-}
-
-@media (min-width:540px){
-.input-field{
-  width:30%;
-}
-.bg-each-candidate-field{
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-}  
-.each-candidate-subContainer1{
-display:flex;
-justify-content:space-around;
-align-items:center;
-width:100%;
-}
-.each-candidate-subContainer2{
-display:flex;
-justify-content:space-around;
-align-items:center;
-width:100%;
-}
-}
-
-@media (max-width:280px){
-  .custom-input-field{
-    margin:30px;
-    height:50px;
-    padding:10px;
-  }
-
-  input[type="date"]{
-    margin:30px;
-    height:50px;
-    padding:10px;
-  }
-
-  .each-candidate-subContainer1{
-    padding:0px;
+    padding: 20px;
     
-  }
-  .each-candidate-subContainer2{
-    padding:0px;
-  }
-}
-
-@media (max-width:530px){
-.bg-each-candidate-field{
-  padding:10px;
-  padding-left:40px;
-  padding-right:40px;
-  text-align:center;
-}
-
-.input-field{
-  width:100%;
 }
 }
-
-
-@media (max-width: 380px){
-  .send-assessment-button{
-    width:150px;
-    font-size:14px;
-    border:0px;
-    background-color:#1565c0;
-    color:white;
-    padding:6px;
-    border-radius: 5px;
-    height:40px;
-  }
-
-  .custom-input-field{
-    height: 40px;
-  }
-
-  input[type="date"]{
-    height:40px;
-  }
+.charts{
+  display: flex;
+  padding:20px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 16px;
+  width:750px;
 }
 
-@media (max-width:640px){
-  .send-assessment-button{
-    width:150px;
-    font-size:14px;
-    border:0px;
-    background-color:#1565c0;
-    color:white;
-    padding:6px;
-    border-radius: 5px;
-    height:40px;
-    margin-top:20px;
-  }
-
-  .custom-input-field{
-    height:50px;
-    padding:10px;
-    font-size:20px;
-  }
-
-  input[type="date"]{
-    height:50px;
-    padding:10px;
-    font-size:20px;
+.details{
+  display: flex;
+  flex-direction: column;
+  width:300px;
+}
+.piechart{
+  margin-left: 0px;
+}
+.chart-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+@media screen and (max-width:1279px){
+  .chart-container{
+    padding-left: 170px;
+    height:auto;
   }
 }
-
-@media (min-width:768px){
-  .custom-input-field{
-    height:50px;
-    padding:10px;
-    font-size:25px;
+@media screen and (max-width:768px){
+  .charts{
+    display: flex;
+    flex-direction: column;
+    width:400px;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
   }
-
-  input[type="date"]{
-    height:50px;
-    padding:10px;
-    font-size:23px; 
-  }
-
-  .send-assessment-button{
-    width:180px;
-    font-size:16px;
-    border:0px;
-    background-color:#1565c0;
-    color:white;
-    padding:6px;
-    border-radius: 5px;
-    height:50px;
-    margin-top:20px;
+  .details{
+    text-align: center;
   }
 }
-
-/*Each Candidate Input Field Styles*/
-
-/*Send Assessements Component Styles*/
+@media screen and (max-width:767px){
+  .chart-container{
+    margin-left: 100px;
+  }
+}
+@media screen and (max-width:600px){
+  .chart-container{
+    margin-left: 160px;
+  }
+}
+@media screen and (max-width:300px){
+  .chart-container{
+    margin-left: 260px;
+    height:100vh;
+  }
+}
+@media screen and (max-width:768px){
+  .send{
+    width:100px;
+  }
+}

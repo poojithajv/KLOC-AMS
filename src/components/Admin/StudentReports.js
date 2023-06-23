@@ -1,11 +1,11 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import {GiHamburgerMenu} from "react-icons/gi"
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import Cookies from 'js-cookie'
 import { useNavigate } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
-import './Tabulation.css'
+import './StudentReports.css'
 function StudentReports() {
     const location=useLocation()
     const [search,setSearch]=useState('')
@@ -33,8 +33,14 @@ function StudentReports() {
     };
     const filteredData=filterData.filter(i=>i.Email_Address.toLowerCase().includes(search.toLowerCase()))
 
+    useEffect(() => {
+      const token = Cookies.get("token");
+      if (!token) {
+        navigate("/notFound");
+      }
+    }, []);
   return (
-    <>
+    <div className='student-reports-container'>
     <div className="admin-header-container">
       <div className="admin-header-logo-container">
               <img src="https://res.cloudinary.com/dufx8zalt/image/upload/v1687419355/logoimage1_krvkbq.png" alt="logo" style={{height:'50px', width:'100px', borderRadius:'10px'}} onClick={()=>navigate('/')}/>
@@ -59,16 +65,16 @@ function StudentReports() {
                 </div>
   </Popup>
                 </div>
-        </div>  
-    <div style={{display:'flex',flexDirection:'column',textAlign:'center',paddingTop:'30px',paddingBottom:'20px',minHeight:'100vh'}}>
+    </div>  
+    <div className='table-reports-container'>
         <h1 style={{marginBottom:'15px'}}>Student Data</h1>
-        <label htmlFor="search">
+        <div className='input-label-container'>
+          <label htmlFor="search">
                 Search by Student Email : 
-                
-        <input id="search" value={search} type="text" onChange={handleSearch} style={{marginBottom:'20px',marginLeft:'20px'}}/>
-      </label>
-      <div>
-          <div style={{display:'flex',flexDirection:'row',justifyContent:'center',alignItems:'center',marginBottom:'20px'}}>
+          </label>
+          <input id="search" value={search} type="text" onChange={handleSearch} style={{marginBottom:'20px',marginLeft:'25px'}} className='input-search'/>
+        </div>
+          <div className='date-filter'>
           <div className='display-between'>
             Start Date:{"   "}
             <input
@@ -78,7 +84,7 @@ function StudentReports() {
               style={{marginLeft:'10px'}}
             />
           </div>
-          <div style={{marginLeft:'10px'}}>
+          <div className='display-between'>
             End Date:{" "}
             <input
               type='date'
@@ -87,10 +93,9 @@ function StudentReports() {
               style={{marginLeft:'10px'}}
             />
           </div>
-          <button style={{marginLeft:'20px',padding:'2px',width:'60px'}} onClick={handleFilter}>Filter</button>
+          <button style={{padding:'2px',width:'60px'}} onClick={handleFilter}>Filter</button>
         </div>
-      </div>
-      <div style={{width:'800px',marginLeft:'100px'}}>
+      <div className='desktop-table-container'>
         {filteredData.length >0  ? <table border="2px">
             <thead >
                 <tr>
@@ -134,8 +139,59 @@ function StudentReports() {
             </tbody>
         </table> :'No Data Found'}
         </div>
+        <div className='mobile-table-container'>
+        {filteredData.length >0  ? (
+          filteredData.map((item,index)=>
+            <div className='table-data-container'>
+            <div className='table-data'>
+              <p className='th'>Id</p>
+              <p className='td'>{index+1}</p>
+            </div>
+            <div className='table-data'>
+              <p>Completed On</p>
+              <p className='td'>{item.Timestamp}</p>
+            </div>
+            <div className='table-data'>
+              <p>Name</p>
+              <p className='td'>{item.Name}</p>
+            </div>
+            <div className='table-data'>
+              <p>Email Address</p>
+              <p className='td'>{item.Email_Address}</p>
+            </div>
+            <div className='table-data'>
+              <p>Phone Number</p>
+              <p className='td'>{item.Phone_Number}</p>
+            </div>
+            <div className='table-data'>
+              <p>Email Address</p>
+              <p className='td'>{item.Email_Address}</p>
+            </div>
+            <div className='table-data'>
+              <p>Total Score</p>
+              <p className='td'>{item.Score}</p>
+            </div>
+            <div className='table-data'>
+              <p>{item.aptitude_score !==undefined ? 'Aptitude Score' : 'Java Score'}</p>
+              <p className='td'>{item.aptitude_score !==undefined ? item.aptitude_score : item.fullstack_java_score}</p>
+            </div>
+            <div className='table-data'>
+              <p>{item.technical_score !==undefined ? "Technical Score" : "React Score"}</p>
+              <p className='td'>{item.technical_score !==undefined ? item.technical_score : (item.reasoning_score!==undefined ? item.reasoning_score : item.fullstack_react_score )}</p>
+            </div>
+            <div className='table-data'>
+              <p>Test Type</p>
+              <p className='td'>{item.testType}</p>
+            </div>
+            <div className='view-button'>
+              <button className='btn' onClick={()=>navigate('/studentChart',{state:item})}>View Score</button>
+            </div>
+          </div>
+          
+        ) ) : 'No Data Found'}
+        </div>
+        </div>
     </div>
-    </>
   )
   
 }

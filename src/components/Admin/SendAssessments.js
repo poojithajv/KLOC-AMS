@@ -200,7 +200,7 @@ const Assessment = () => {
             Proceed
           </Button>
         </div>
-        {proceedingStatus ? <div className="each-input-student-details-container">
+        <div className="each-input-student-details-container">
           {proceeding &&
             Array.from({ length: studentCount }, (_, index) => (
               <EachCandidateInputField
@@ -211,9 +211,9 @@ const Assessment = () => {
             ))}
           {proceeding && (
             <div className="text-center">
-              <Button variant="contained" onClick={handleClickOpen}>
-                Send Assessment
-              </Button>
+              <button onClick={handleClickOpen} className="send-assessment-button">
+                SEND ASSESSMENT
+              </button>
               <Dialog
                 open={open}
                 onClose={handleClose}
@@ -237,8 +237,7 @@ const Assessment = () => {
               </Dialog>
             </div>
           )}
-        </div> : ""
-}
+        </div>
     </div>
   );
 };

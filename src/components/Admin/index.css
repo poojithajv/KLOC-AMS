@@ -87,8 +87,6 @@
   color: #989898;
 }
 
-
-
 .dashboard_chart_container{
   display: flex;
   align-items:start;
@@ -304,10 +302,67 @@ input::-webkit-inner-spin-button {
   -moz-appearance: textfield;
 } */
 .each-input-student-details-container{
+  padding:20px;
   width:100%;
 }
 
-@media (max-width:640px){
+.custom-input-field{
+  border:1px solid rgb(201, 200, 200);
+  border-radius:3px;
+}
+
+input[type="date"]{ 
+  border:1px solid rgb(201, 200, 200);
+  border-radius:3px;
+}
+
+@media (min-width:540px){
+.input-field{
+  width:30%;
+}
+.bg-each-candidate-field{
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+}  
+.each-candidate-subContainer1{
+display:flex;
+justify-content:space-around;
+align-items:center;
+width:100%;
+}
+.each-candidate-subContainer2{
+display:flex;
+justify-content:space-around;
+align-items:center;
+width:100%;
+}
+}
+
+@media (max-width:280px){
+  .custom-input-field{
+    margin:30px;
+    height:50px;
+    padding:10px;
+  }
+
+  input[type="date"]{
+    margin:30px;
+    height:50px;
+    padding:10px;
+  }
+
+  .each-candidate-subContainer1{
+    padding:0px;
+    
+  }
+  .each-candidate-subContainer2{
+    padding:0px;
+  }
+}
+
+@media (max-width:530px){
 .bg-each-candidate-field{
   padding:10px;
   padding-left:40px;
@@ -318,6 +373,80 @@ input::-webkit-inner-spin-button {
 .input-field{
   width:100%;
 }
+}
+
+
+@media (max-width: 380px){
+  .send-assessment-button{
+    width:150px;
+    font-size:14px;
+    border:0px;
+    background-color:#1565c0;
+    color:white;
+    padding:6px;
+    border-radius: 5px;
+    height:40px;
+  }
+
+  .custom-input-field{
+    height: 40px;
+  }
+
+  input[type="date"]{
+    height:40px;
+  }
+}
+
+@media (max-width:640px){
+  .send-assessment-button{
+    width:150px;
+    font-size:14px;
+    border:0px;
+    background-color:#1565c0;
+    color:white;
+    padding:6px;
+    border-radius: 5px;
+    height:40px;
+    margin-top:20px;
+  }
+
+  .custom-input-field{
+    height:50px;
+    padding:10px;
+    font-size:20px;
+  }
+
+  input[type="date"]{
+    height:50px;
+    padding:10px;
+    font-size:20px;
+  }
+}
+
+@media (min-width:768px){
+  .custom-input-field{
+    height:50px;
+    padding:10px;
+    font-size:25px;
+  }
+
+  input[type="date"]{
+    height:50px;
+    padding:10px;
+    font-size:23px; 
+  }
+
+  .send-assessment-button{
+    width:180px;
+    font-size:16px;
+    border:0px;
+    background-color:#1565c0;
+    color:white;
+    padding:6px;
+    border-radius: 5px;
+    height:50px;
+    margin-top:20px;
+  }
 }
 
 /*Each Candidate Input Field Styles*/

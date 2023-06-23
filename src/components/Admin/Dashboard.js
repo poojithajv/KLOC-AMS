@@ -331,33 +331,10 @@ const Dashboard = () => {
   </Popup>
                 </div>
         </div>
-        {/* <div className="headerContainer">
-              <div className="headerLogoContainer">
-              <img src="https://res.cloudinary.com/dufx8zalt/image/upload/v1687419355/logoimage1_krvkbq.png" alt="logo" style={{height:'50px', width:'100px', borderRadius:'10px'}}/>
-              </div>
-              <div className="desktopHeaderNavbarContainer">
-              <p onClick={()=>navigate('/')} className='headerNavbarLink'>Home</p>
-              <p onClick={()=>navigate('/studentLogin')} className='headerNavbarLink'>Student</p>
-              <p onClick={()=>navigate('/adminLogin')} className='headerNavbarLink'>Admin</p>
-              </div>
-              <div className="mobileHeaderNavbarContainer">
-              
-              <Popup trigger={<button  className="hamburger-btn"><GiHamburgerMenu /></button>} position="bottom" >
-              <div className="mobile-hamburger-menu-container">
-              <ul className="mobile-hamburger-menu">
-                <li onClick={()=>navigate('/')} className='headerNavbarLink'>Home</li>
-                <li onClick={()=>navigate('/studentLogin')} className='headerNavbarLink'>Student</li>
-                <li onClick={()=>navigate('/adminLogin')} className='headerNavbarLink'>Admin</li>
-                </ul>
-                </div>
-  </Popup>
-              </div>
-              </div> */}
       <div style={{display:"flex",flexDirection:"column"}}>
         <h1 style={{textAlign:"center",marginBottom:'20px',"@media (max-width:820px)":{
           textAlign:"left",marginLeft:"20px"
         } }}>AMS METRICS</h1>
-          {/* <h2 style={{textAlign:"center",fontSize:"20px",marginBottom:'0px'}}>All TestS Metrics</h2> */}
         <Chart
         style={{
           marginLeft:'0px',

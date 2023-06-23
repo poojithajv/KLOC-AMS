@@ -55,6 +55,7 @@ export default function StudentLogin() {
           (item) => item.uniqueId === testKey
         );
         console.log(filteredData, "fg");
+        console.log(filteredData.isCompleted);
         if (filteredData === undefined) {
           setMessage("You don't have access to write this test");
         } else if (filteredData.isCompleted === "incomplete") {
@@ -75,6 +76,8 @@ export default function StudentLogin() {
           } else {
             setMessage("Your email end password mismatch");
           }
+        } else if (filteredData.isCompleted === "test expired") {
+          setMessage("Your Test is expired");
         } else {
           setMessage("You already completed the test");
         }

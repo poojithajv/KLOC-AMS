@@ -6,6 +6,7 @@ import '../Tabulation.css'
 function FullStackTest() {
     const location=useLocation()
     const [data,setData]=useState(location.state)
+    console.log(data)
       const navigate=useNavigate()
       
     return (
@@ -37,7 +38,7 @@ function FullStackTest() {
                         <td>{item.fullstack_react_score}</td>
                         <td>
                             <button onClick={()=>navigate('/studentChart',{state:item})
-                            } >
+                            } style={{padding:'3px',width:'60px'}}>
                                 View
                             </button>
                         </td>

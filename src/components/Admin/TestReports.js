@@ -17,6 +17,7 @@ const TestReports = () => {
   const location=useLocation()
     const [data,setData]=useState(location.state)
   const navigate = useNavigate();
+  console.log(data.datat)
   const testDetails = [
     {
       name: "Fresher QA Test",

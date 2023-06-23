@@ -257,6 +257,7 @@
   font-size:18px;
     margin-right:20px;
     font-weight:bold;
+    margin-top: 8px;
 }
 
 .admin-header-login{
@@ -264,6 +265,7 @@
   color:white;
   font-weight:bold;
   font-size:18px;
+  margin-top: 8px;
 }
 
 @media (max-width:768px){

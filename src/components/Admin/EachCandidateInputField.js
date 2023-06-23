@@ -22,43 +22,49 @@ const EachCandidateInputField = ({ onInputChange }) => {
   console.log(inputValues);
   return (
       <div className="bg-each-candidate-field">
-        <TextField
+        <div className="each-candidate-subContainer1">
+        <input
           id="outlined-basic-1"
-          label="name"
+          placeholder="Name"
           variant="outlined"
-          className="input-field m-1"
+          className="input-field m-1 custom-input-field"
           value={inputValues.name}
           onChange={(e) => handleInputChange("name", e.target.value)}
           required
+          
         />
-        <TextField
+        <input
           id="outlined-basic-2"
-          label="Email"
+          placeholder="Email"
           variant="outlined"
-          className="input-field m-1"
+          className="input-field m-1 custom-input-field"
           value={inputValues.email}
           onChange={(e) => handleInputChange("email", e.target.value)}
           required
         />
-        <TextField
+        </div> 
+        <div className="each-candidate-subContainer2">
+        <input
           id="outlined-basic-3"
-          label="Phone"
+          placeholder="Phone"
           variant="outlined"
-          className="input-field m-1"
+          className="input-field m-1 custom-input-field"
           value={inputValues.phone}
           onChange={(e) => handleInputChange("phone", e.target.value)}
           required
         />
-        <TextField
+        <input 
           id="outlined-basic-4"
+          placeholder="Date"
           type="date"
           variant="outlined"
-          className="input-field m-1"
+          className="input-field m-1 custome-input-field"
           value={inputValues.endDate}
           onChange={(e) => handleInputChange("endDate", e.target.value)}
           required
         />
-        <hr />
+        </div>
+        {/* <hr /> */}
       </div>
   );
 };

@@ -104,12 +104,15 @@ const Assessment = () => {
   const updateStudentThroughSheetDb = (student) => {
     console.log(activeTest);
     const random = uniqueRandom(10000, 100000);
+    const sentDate = new Date(); // Current date and time
+    const endDate = new Date(student.endDate); // Convert endDate to a Date object
     const details = {
       name: student.name,
       email: student.email,
       test: activeTest,
       phoneNo: student.phone,
-      endDate: student.endDate,
+      sentDate: sentDate,
+      endDate: endDate,
       uniqueId: "kloc" + random(),
       isCompleted: "incomplete",
     };
@@ -124,9 +127,18 @@ const Assessment = () => {
       body: JSON.stringify(details),
     })
       .then((response) => response.json())
-      .then((data) => console.log(data))
+      .then((data) => {
+        console.log(data);
+      })
       .catch((error) => console.log(error));
-    // sendingMailThroughEmailJs(details);
+    const millisecondsDiff = Math.abs(sentDate.getTime() - endDate.getTime());
+    setTimeout(() => {
+      const key = "AIzaSyAz1z7QqYvovxmnO-lvzoORcMC1UZzXNRE";
+      console.log(details.uniqueId);
+      fetch(
+        `https://script.google.com/macros/s/AKfycbwYjd68zDra8M_URGyixHK87--R17dEEX4e5vMbyK3FWjQ48hWlaKg3Vzl9f3Foua7-3g/exec?key=${key}&uniqueId=${details.uniqueId}`
+      );
+    }, millisecondsDiff);
   };
   const onClickSendAssessment = () => {
     console.log("triggered");

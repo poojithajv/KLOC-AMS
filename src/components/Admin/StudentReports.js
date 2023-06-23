@@ -5,7 +5,6 @@ import 'reactjs-popup/dist/index.css';
 import Cookies from 'js-cookie'
 import { useNavigate } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
-import './Tabulation.css'
 import './StudentReports.css'
 function StudentReports() {
     const location=useLocation()
@@ -41,7 +40,7 @@ function StudentReports() {
       }
     }, []);
   return (
-    <>
+    <div className='student-reports-container'>
     <div className="admin-header-container">
       <div className="admin-header-logo-container">
               <img src="https://res.cloudinary.com/dufx8zalt/image/upload/v1687419355/logoimage1_krvkbq.png" alt="logo" style={{height:'50px', width:'100px', borderRadius:'10px'}} onClick={()=>navigate('/')}/>
@@ -66,16 +65,16 @@ function StudentReports() {
                 </div>
   </Popup>
                 </div>
-        </div>  
-    <div style={{display:'flex',flexDirection:'column',textAlign:'center',paddingTop:'30px',paddingBottom:'20px',minHeight:'100vh'}}>
+    </div>  
+    <div className='table-reports-container'>
         <h1 style={{marginBottom:'15px'}}>Student Data</h1>
-        <label htmlFor="search">
+        <div className='input-label-container'>
+          <label htmlFor="search">
                 Search by Student Email : 
-                
-        <input id="search" value={search} type="text" onChange={handleSearch} style={{marginBottom:'20px',marginLeft:'20px'}}/>
-      </label>
-      <div>
-          <div style={{display:'flex',flexDirection:'row',justifyContent:'center',alignItems:'center',marginBottom:'20px'}}>
+          </label>
+          <input id="search" value={search} type="text" onChange={handleSearch} style={{marginBottom:'20px',marginLeft:'25px'}} className='input-search'/>
+        </div>
+          <div className='date-filter'>
           <div className='display-between'>
             Start Date:{"   "}
             <input
@@ -85,7 +84,7 @@ function StudentReports() {
               style={{marginLeft:'10px'}}
             />
           </div>
-          <div style={{marginLeft:'10px'}}>
+          <div className='display-between'>
             End Date:{" "}
             <input
               type='date'
@@ -94,9 +93,8 @@ function StudentReports() {
               style={{marginLeft:'10px'}}
             />
           </div>
-          <button style={{marginLeft:'20px',padding:'2px',width:'60px'}} onClick={handleFilter}>Filter</button>
+          <button style={{padding:'2px',width:'60px'}} onClick={handleFilter}>Filter</button>
         </div>
-      </div>
       <div className='desktop-table-container'>
         {filteredData.length >0  ? <table border="2px">
             <thead >
@@ -161,54 +159,39 @@ function StudentReports() {
               <p>Email Address</p>
               <p className='td'>{item.Email_Address}</p>
             </div>
+            <div className='table-data'>
+              <p>Phone Number</p>
+              <p className='td'>{item.Phone_Number}</p>
+            </div>
+            <div className='table-data'>
+              <p>Email Address</p>
+              <p className='td'>{item.Email_Address}</p>
+            </div>
+            <div className='table-data'>
+              <p>Total Score</p>
+              <p className='td'>{item.Score}</p>
+            </div>
+            <div className='table-data'>
+              <p>{item.aptitude_score !==undefined ? 'Aptitude Score' : 'Java Score'}</p>
+              <p className='td'>{item.aptitude_score !==undefined ? item.aptitude_score : item.fullstack_java_score}</p>
+            </div>
+            <div className='table-data'>
+              <p>{item.technical_score !==undefined ? "Technical Score" : "React Score"}</p>
+              <p className='td'>{item.technical_score !==undefined ? item.technical_score : (item.reasoning_score!==undefined ? item.reasoning_score : item.fullstack_react_score )}</p>
+            </div>
+            <div className='table-data'>
+              <p>Test Type</p>
+              <p className='td'>{item.testType}</p>
+            </div>
+            <div className='view-button'>
+              <button className='btn' onClick={()=>navigate('/studentChart',{state:item})}>View Score</button>
+            </div>
           </div>
           
         ) ) : 'No Data Found'}
-        {/* <table border="2px">
-            <thead >
-                <tr>
-                    <th>Id</th>
-                    <th>Completed On</th>
-                    <th>Name</th>
-                    <th>Email Address</th>
-                    <th>Phone Number</th>
-                    <th>Total Score</th>
-                    <th>Aptitude Score</th>
-                    <th>Technical Score</th>
-                    <th>Java Score</th> 
-                    <th>React Score</th>
-                    <th>Reasoning Score</th>
-                    <th>Test Type</th>   
-                    <th>View Score</th>       
-                </tr>
-            </thead>
-            <tbody>
-                {filteredData.map((item,index)=>
-                    <tr key={index}> 
-                        <td>{index+1}</td>
-                        <td>{item.Timestamp}</td>
-                        <td>{item.Name}</td>
-                        <td>{item.Email_Address}</td>
-                        <td>{item.Phone_Number}</td>
-                        <td>{item.Score}</td>
-                        <td>{item.aptitude_score===undefined ? 'NA' : item.aptitude_score}</td>
-                        <td>{item.technical_score===undefined ? 'NA':item.technical_score}</td>
-                        <td>{item.fullstack_java_score===undefined ? 'NA' : item.fullstack_java_score}</td>
-                        <td>{item.fullstack_react_score===undefined ? 'NA' :item.fullstack_react_score}</td>
-                        <td>{item.reasoning_score===undefined ? 'NA' : item.reasoning_score}</td>
-                        <td>{item.testType}</td>
-                        <td>
-                            <button onClick={()=>navigate('/studentChart',{state:item})} style={{padding:'3px',width:'60px'}} >
-                                View
-                            </button>
-                        </td>
-                    </tr>
-                )}
-            </tbody>
-        </table> */}
+        </div>
         </div>
     </div>
-    </>
   )
   
 }

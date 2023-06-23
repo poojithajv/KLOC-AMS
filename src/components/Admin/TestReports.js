@@ -116,7 +116,7 @@ const TestReports = () => {
                 </div>
         </div>
       <div>
-        <h1>Test Reports</h1>
+        <h1 style={{textAlign:'center'}}>Test Reports</h1>
         <div className='test-container'>
           {testDetails.map((each, index) => {
             return (

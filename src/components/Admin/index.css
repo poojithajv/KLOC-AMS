@@ -274,5 +274,11 @@ input::-webkit-inner-spin-button {
 .admin-mobile-hamburger-menu{
     color:#1d1a69;
     list-style-type:none;
+    padding: 20px;
+    
 }
+}
+.admin-mobile-hamburger-menu :hover {
+  color:burlywood;
+  
 }

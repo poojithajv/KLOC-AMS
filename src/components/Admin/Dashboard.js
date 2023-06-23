@@ -9,10 +9,12 @@ import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 
 import './index.css'
+import { Legend } from "recharts";
 const Dashboard = () => {
   const location=useLocation()
   const navigate = useNavigate();
   const [finalData,setFinalData]=useState(location.state)
+  
   // const [isOpen, setIsOpen] = useState(false)
   // const clickHamburger = () => {
   //   setIsOpen(!isOpen)
@@ -250,7 +252,7 @@ const Dashboard = () => {
     }
   }, []);
   const options = {
-    legend: "none",
+   
     title:"All Tests Metrics",
     pieStartAngle: 100,
   };
@@ -335,11 +337,12 @@ const Dashboard = () => {
         <h1 style={{textAlign:"center",marginBottom:'20px',"@media (max-width:820px)":{
           textAlign:"left",marginLeft:"20px"
         } }}>AMS METRICS</h1>
+
         <Chart
         style={{
           marginLeft:'0px',
-          width:'400px',
-          height:'400px',"@media (max-width:768px) ":{
+          width:'700px',
+          height:'700px',"@media (max-width:768px) ":{
             width:"200px",
             height:"200px",
             marginTop:"0px",
@@ -349,16 +352,32 @@ const Dashboard = () => {
         data={pieData}
         options={options}
       ></Chart>
+      
         </div>
+       <div>
+       <button style={{backgroundColor:"#aed25d" ,height:"20px",width:"40px",border:"none"}}></button>
+       <span>Apptitude__correct_answers_Percentage</span> ; 
+       <button style={{backgroundColor:"#6f6fed" ,height:"20px",width:"40px",border:"none",marginLeft:"10px"}}></button>
+        <span>Technical_correct_answers_Percentage</span>;
+        <button style={{backgroundColor:"#9f93ed" ,height:"20px",width:"40px",border:"none",marginLeft:"10px"}}></button>
+        <span>FresherJunior_Reasioning_correct_answers_Percentage</span><br></br>;
+        <button style={{backgroundColor:"#468f0a" ,height:"20px",width:"40px",border:"none",marginLeft:"10px"}}></button>
+        <span>Fullstack_Java_Correct_Answers_Percentage</span>;
+        <button style={{backgroundColor:"#4d71bd" ,height:"20px",width:"40px",border:"none",marginLeft:"10px"}}></button>
+        <span>Fullstack_React_Correct_Answeres_Percentage</span>
+       </div>
         <div className="dashboard_chart_container">
        
        <Chart 
         chartType="PieChart"
         data={fresherPieData}
-        options={fresheroptions}
+        options={{
+          title:"Fresher Test Metrics",
+          colors:["#aed25d","#6f6fed"],
+          legend:"none"
+        }}
         style={{
           marginLeft:'10px',
-         
           width:'400px',
           height:'400px',"@media (max-width:768px)and (max-height:768px) ":{
             width:"200px",
@@ -370,7 +389,11 @@ const Dashboard = () => {
       <Chart
         chartType="PieChart"
         data={pythonPieData}
-        options={pythontestoptions}
+        options={{
+          title:"Python Test Metrics",
+          colors:["#aed25d","#6f6fed"],
+          legend:"none"
+        }}
         style={{
           marginLeft:'10px',
          
@@ -385,8 +408,11 @@ const Dashboard = () => {
       <Chart
         chartType="PieChart"
         data={fullStackPieData}
-        options={fullstactoptions}
-        style={{
+        options={{
+          title:"FullStack Test Metrics",
+          colors:["#468f0a","#4d71bd"],
+          legend:"none"
+        }}        style={{
           marginLeft:'10px',
           marginRight:'10px',
           width:'400px',
@@ -403,8 +429,11 @@ const Dashboard = () => {
       <Chart
         chartType="PieChart"
         data={javaPieData}
-        options={javaoptions}
-        style={{
+        options={{
+          title:"Java Test Metrics",
+          colors:["#aed25d","#6f6fed"],
+          legend:"none"
+        }}        style={{
           marginLeft:'10px',
           width:'400px',
           height:'400px',
@@ -419,7 +448,11 @@ const Dashboard = () => {
       <Chart
         chartType="PieChart"
         data={qaPieData}
-        options={qaoptions}
+        options={{
+          title:"QA Test Metrics",
+          colors:["#aed25d","#6f6fed"],
+          legend:"none"
+        }}
         style={{
           marginLeft:'10px',
           marginRight:'10px',
@@ -436,8 +469,11 @@ const Dashboard = () => {
       <Chart 
         chartType="PieChart"
         data={frontendfresherPieData}
-        options={froentendFresheroprions}
-        style={{
+        options={{
+          title:"FroentFresher Test Metrics",
+          colors:["#aed25d","#6f6fed"],
+          legend:"none"
+        }}        style={{
           marginLeft:'10px',
           marginRight:'10px',
           width:'400px',
@@ -458,8 +494,11 @@ const Dashboard = () => {
       <Chart
         chartType="PieChart"
         data={freshersJuniorPieData}
-        options={fresherjunioroptions}
-        style={{
+        options={{
+          title:"FresherJunior Test Metrics",
+          colors:["#aed25d","#9f93ed"],
+          legend:"none"
+        }}        style={{
           marginLeft:'10px',
           marginRight:'10px',
           width:'400px',
@@ -475,8 +514,11 @@ const Dashboard = () => {
       <Chart
         chartType="PieChart"
         data={merndeveloperJuniorPieData}
-        options={merndeveloperjunioroptions }
-        style={{
+        options={{
+          title:"MernDeveloper Junior Test Metrics",
+          colors:["#aed25d","#6f6fed"],
+          legend:"none"
+        }}        style={{
           marginLeft:'10px',
           marginRight:'10px',
           width:'400px',
@@ -491,8 +533,11 @@ const Dashboard = () => {
       <Chart
         chartType="PieChart"
         data={merndeveloperintermediatePieData}
-        options={mernintermediateoprions}
-        style={{
+        options={{
+          title:"MernDeveloperIntermediate Test Metrics",
+          colors:["#aed25d","#6f6fed"],
+          legend:"none"
+        }}        style={{
           marginLeft:'10px',
           marginRight:'10px',
           width:'400px',
@@ -509,7 +554,11 @@ const Dashboard = () => {
      <Chart
         chartType="PieChart"
         data={shopifyPieData}
-        options={shopifyoptions}
+        options={{
+          title:"Shopify Test Metrics",
+          colors:["#aed25d","#6f6fed"],
+          legend:"none"
+        }}
         style={{
           marginLeft:'10px',
           marginRight:'10px',

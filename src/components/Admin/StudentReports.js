@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import {GiHamburgerMenu} from "react-icons/gi"
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
@@ -6,6 +6,7 @@ import Cookies from 'js-cookie'
 import { useNavigate } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
 import './Tabulation.css'
+import './StudentReports.css'
 function StudentReports() {
     const location=useLocation()
     const [search,setSearch]=useState('')
@@ -33,6 +34,12 @@ function StudentReports() {
     };
     const filteredData=filterData.filter(i=>i.Email_Address.toLowerCase().includes(search.toLowerCase()))
 
+    useEffect(() => {
+      const token = Cookies.get("token");
+      if (!token) {
+        navigate("/notFound");
+      }
+    }, []);
   return (
     <>
     <div className="admin-header-container">
@@ -90,7 +97,7 @@ function StudentReports() {
           <button style={{marginLeft:'20px',padding:'2px',width:'60px'}} onClick={handleFilter}>Filter</button>
         </div>
       </div>
-      <div style={{width:'800px',marginLeft:'100px'}}>
+      <div className='desktop-table-container'>
         {filteredData.length >0  ? <table border="2px">
             <thead >
                 <tr>
@@ -133,6 +140,72 @@ function StudentReports() {
                 )}
             </tbody>
         </table> :'No Data Found'}
+        </div>
+        <div className='mobile-table-container'>
+        {filteredData.length >0  ? (
+          filteredData.map((item,index)=>
+            <div className='table-data-container'>
+            <div className='table-data'>
+              <p className='th'>Id</p>
+              <p className='td'>{index+1}</p>
+            </div>
+            <div className='table-data'>
+              <p>Completed On</p>
+              <p className='td'>{item.Timestamp}</p>
+            </div>
+            <div className='table-data'>
+              <p>Name</p>
+              <p className='td'>{item.Name}</p>
+            </div>
+            <div className='table-data'>
+              <p>Email Address</p>
+              <p className='td'>{item.Email_Address}</p>
+            </div>
+          </div>
+          
+        ) ) : 'No Data Found'}
+        {/* <table border="2px">
+            <thead >
+                <tr>
+                    <th>Id</th>
+                    <th>Completed On</th>
+                    <th>Name</th>
+                    <th>Email Address</th>
+                    <th>Phone Number</th>
+                    <th>Total Score</th>
+                    <th>Aptitude Score</th>
+                    <th>Technical Score</th>
+                    <th>Java Score</th> 
+                    <th>React Score</th>
+                    <th>Reasoning Score</th>
+                    <th>Test Type</th>   
+                    <th>View Score</th>       
+                </tr>
+            </thead>
+            <tbody>
+                {filteredData.map((item,index)=>
+                    <tr key={index}> 
+                        <td>{index+1}</td>
+                        <td>{item.Timestamp}</td>
+                        <td>{item.Name}</td>
+                        <td>{item.Email_Address}</td>
+                        <td>{item.Phone_Number}</td>
+                        <td>{item.Score}</td>
+                        <td>{item.aptitude_score===undefined ? 'NA' : item.aptitude_score}</td>
+                        <td>{item.technical_score===undefined ? 'NA':item.technical_score}</td>
+                        <td>{item.fullstack_java_score===undefined ? 'NA' : item.fullstack_java_score}</td>
+                        <td>{item.fullstack_react_score===undefined ? 'NA' :item.fullstack_react_score}</td>
+                        <td>{item.reasoning_score===undefined ? 'NA' : item.reasoning_score}</td>
+                        <td>{item.testType}</td>
+                        <td>
+                            <button onClick={()=>navigate('/studentChart',{state:item})} style={{padding:'3px',width:'60px'}} >
+                                View
+                            </button>
+                        </td>
+                    </tr>
+                )}
+            </tbody>
+        </table> */}
         </div>
     </div>
     </>

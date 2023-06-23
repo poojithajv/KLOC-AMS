@@ -20,7 +20,7 @@ function Home() {
               </div>
               <div className="mobileHeaderNavbarContainer">
               
-              <Popup trigger={<button  className="hamburger-btn"><GiHamburgerMenu /></button>} position="bottom" className="mobile-hamburger-menu-container">
+              <Popup  style = {{background:"yellow"}} trigger={<button  className="hamburger-btn"><GiHamburgerMenu /></button>} position="bottom" className="mobile-hamburger-menu-container">
               <div className="mobile-hamburger-menu-container">
               <ul className="mobile-hamburger-menu">
                 <li onClick={()=>navigate('/')} className='headerNavbarLink'>Home</li>

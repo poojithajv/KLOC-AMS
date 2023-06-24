@@ -327,32 +327,53 @@ const Dashboard = () => {
         <h1 style={{textAlign:"center",marginBottom:'20px',"@media (max-width:820px)":{
           textAlign:"left",marginLeft:"20px"
         } }}>AMS METRICS</h1>
-       <h2 className="allmetricsHeadining">This metrics all about number of Tests taken by candidate for each test </h2>
-        <div>
-        <button style={{height:"20px",width:"40px",backgroundColor:"#e89510",border:"0px"}}></button>
-       <span>Python</span>
-      <button style={{height:"20px",width:"40px",backgroundColor:"#e62e81",border:"0px"}}></button>
-        <span>Java</span>
-        <button style={{height:"20px",width:"40px",backgroundColor:"#5c9ed1",border:"0px"}}></button>
-        <span>FullStack</span>
-        <button style={{height:"20px",width:"40px",backgroundColor:"#963596",border:"0px"}}></button>
-        <span>QA</span>
-        <button style={{height:"20px",width:"40px",backgroundColor:"#2b8a3c ",border:"0px"}}></button>
-        <span>Froentend fresher</span>
-        <button style={{height:"20px",width:"40px",backgroundColor:"#0e3ab3",border:"0px"}}></button>
-        <span>Fresher Junior</span>
-        <button style={{height:"20px",width:"40px",backgroundColor:"#f05232 ",border:"0px"}}></button>
-        <span>Fresher Test</span>
-        <button style={{height:"20px",width:"40px",backgroundColor:"#62b027",border:"0px"}}></button> 
-        <span>Mern Intermediate</span>
-        <button style={{height:"20px",width:"40px",backgroundColor:"#b02709",border:"0px"}}></button>   
-        <span>Mern Junior</span>
-        <button style={{height:"20px",width:"40px",backgroundColor:"#102061",border:"0px"}}></button>
-        <span>Shopify</span>
-        <button  className="totaltestconductedbutton" style={{backgroundColor:"#5c93d1",color:"wheat", fontSize:"20px", fontFamily:"roboto", marginLeft:"100px" , border:"none",height:"50px"}}>TotalTestsConducted:{fresher+fullStack+python+freshersJunior+frontendfresher+qa+java+shopify+merndeveloperintermediate+merndeveloperjunior}</button>
-
-            </div>
-       
+       <h2 className="allmetricsHeading">Below Metric is about number of tests taken by student for each test in percentage</h2>
+          <div className="piechart-details">
+        <div className="test-legend">
+        <button className='color' ></button>
+        <span className='test'>Python Test</span>
+        </div>
+        <div className="test-legend">
+        <button style={{backgroundColor:"#e62e81"}} className='color'></button>
+        <span className='test'>Java Test</span>
+        </div>
+        <div className="test-legend">
+        <button style={{backgroundColor:"#5c9ed1"}} className='color'></button>
+        <span className='test'>FullStack Test</span>
+        </div>
+        <div className="test-legend">
+        <button className='color' style={{backgroundColor:"#963596"}}></button>
+        <span className='test'>QA Test</span>
+        </div>
+        <div className="test-legend">
+        <button className='color' style={{backgroundColor:"#2b8a3c"}}></button>
+        <span className='test'>Frontend Fresher Test</span>
+        </div>
+        <div className="test-legend">
+        <button className='color' style={{backgroundColor:"#0e3ab3"}}></button>
+        <span className='test'>Freshers Junior Test</span>
+        </div>
+        <div className="test-legend">
+        <button className='color' style={{backgroundColor:"#f05232"}}></button>
+        <span className='test'>Freshers Test</span>
+        </div>
+        <div className="test-legend">
+        <button className='color' style={{backgroundColor:"#62b027"}}></button> 
+        <span className='test'>MERN Developer Intermediate Test</span>
+        </div>
+        <div className="test-legend">
+        <button className='color' style={{backgroundColor:"#b02709"}}></button>   
+        <span className='test'>MERN Developer Junior Test</span>
+        </div>
+        <div className="test-legend">
+        <button className='color' style={{backgroundColor:"#102061"}}></button>
+        <span className='test'>Shopify Developer Test</span>
+        </div>
+        </div>
+        <div style={{textAlign:'center'}}>
+        <button  className="totaltestconductedbutton" >Total Tests Conducted:{fresher+fullStack+python+freshersJunior+frontendfresher+qa+java+shopify+merndeveloperintermediate+merndeveloperjunior}</button>
+        </div>
+       <div className="test-chart">
         <Chart
         className="allstremsPiechart"
         chartType="PieChart"
@@ -362,25 +383,34 @@ const Dashboard = () => {
           title:"All Test Metrics",legend:"none"
         }}
       ></Chart>
+      </div>
       
         </div>
-        <h3 className="allmetricsHeadining">This metrics  about percentage of every section which are correctly answered by candidate </h3>
+        <h3 className="allmetricsHeading">Below Metrics are about percentage of each section which are correctly answered by students of different tests</h3>
 
-       <div>
-       <button style={{backgroundColor:"#aed25d" ,height:"20px",width:"40px",border:"none"}}></button>
-       <span>Apptitude</span> 
-       <button style={{backgroundColor:"#6f6fed" ,height:"20px",width:"40px",border:"none",marginLeft:"10px"}}></button>
-        <span>Technical</span>
-        <button style={{backgroundColor:"#9f93ed" ,height:"20px",width:"40px",border:"none",marginLeft:"10px"}}></button>
-        <span>Reasoing</span>
-        <button style={{backgroundColor:"#468f0a" ,height:"20px",width:"40px",border:"none",marginLeft:"10px"}}></button>
-        <span>Java</span>
-        <button style={{backgroundColor:"#4d71bd" ,height:"20px",width:"40px",border:"none",marginLeft:"10px"}}></button>
-        <span>React</span>
+        <div className="piechart-details">
+        <div className="test-legend">
+       <button className='color' style={{backgroundColor:"#aed25d"}}></button>
+       <span className='test'>Aptitude</span> 
+       </div>
+       <div className="test-legend">
+       <button className='color' style={{backgroundColor:"#6f6fed" }}></button>
+        <span className='test'>Technical</span>
+        </div>
+        <div className="test-legend">
+        <button className='color' style={{backgroundColor:"#9f93ed"}}></button>
+        <span className='test'>Reasoing</span>
+        </div>
+        <div className="test-legend">
+        <button className='color' style={{backgroundColor:"#468f0a"}}></button>
+        <span className='test'>Java</span>
+        </div>
+        <div className="test-legend">
+        <button className='color' style={{backgroundColor:"#4d71bd"}}></button>
+        <span className='test'>React</span>
+        </div>
        </div>
         <div className="dashboard_chart_container">
-       
-
        <Chart 
        className="testwisePiechart"
         chartType="PieChart"
@@ -413,8 +443,6 @@ const Dashboard = () => {
           legend:"none"
         }}       
       /> 
-      {/* </div> */}
-      {/* <div className="dashboard_chart_container"> */}
       <Chart
         className="testwisePiechart"
         chartType="PieChart"
@@ -447,10 +475,6 @@ const Dashboard = () => {
           legend:"none"
         }}        
       />
-   
-      {/* </div>
-    
-      <div style={{display:'flex',alignItems:"center",flexWrap:"wrap"}}> */}
 
       <Chart
              className="testwisePiechart"
@@ -482,8 +506,6 @@ const Dashboard = () => {
           legend:"none"
         }}        
       />
-      {/* </div>
-     <div> */}
      <Chart     
       className="testwisePiechart"
         chartType="PieChart"

@@ -245,8 +245,10 @@ input::-webkit-inner-spin-button {
 
 .dashboard_chart_container{
   display: flex;
-  align-items:start;
   flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 @media screen and (max-width:840px) {
@@ -444,7 +446,15 @@ padding: 20px;
   }
 }
 .totaltestconductedbutton{
-  border-radius: 3px solid ;
+  border-radius: 3px;
+  background-color: transparent;
+  font-size:20px;
+  font-family:"roboto";
+  margin-left:100px ;
+  border:none;
+  height:50px;
+  padding:5px;
+  margin-top: 20px;
 }
 
 .allstremsPiechart{
@@ -489,10 +499,12 @@ padding: 20px;
     margin-left: 20px;
   }
 }
-.allmetricsHeadining{
+.allmetricsHeading{
   color: gray;
   margin-left: 20px;
   font-size: 28px;
+  margin-bottom: 20px;
+  text-align: center;
 }
 @media  screen and (max-width:375px) {
   .allmetricsHeadining{
@@ -511,4 +523,28 @@ padding: 20px;
   margin-left: 10px;
   font-size: 16x;
  }
+}
+.piechart-details{
+  display:flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+}
+.color{
+  height: 20px;
+  width: 25px;
+  background-color: #e89510;
+  border:0px;
+  margin-right:5px;
+}
+.test{
+  font-size: 20px;
+  margin-bottom: 5px;
+  margin-right: 20px;
+}
+.test-chart{
+  display: flex;
+  justify-content: center;
 }

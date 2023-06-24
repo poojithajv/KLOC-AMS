@@ -1,3 +1,4 @@
+// import index.css file for styling
 import "./index.css";
 
 const NotFound = () => {

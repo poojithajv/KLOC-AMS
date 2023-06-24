@@ -77,6 +77,9 @@ const Dashboard = () => {
      freshers_aptitude_score+=item.aptitude_score
      freshers_technical_score+=item.technical_score
    })
+
+
+   
    freshers_aptitude_percentage=freshers_aptitude_score/data.fresherData.length/ process.env.REACT_APP_FRESHER_TEST_APTITUDE_QUESTIONS*100
    freshers_technical_percentage=freshers_technical_score/(data.fresherData.length*process.env.REACT_APP_FRESHER_TEST_TECHNICAL_QUESTIONS)*100
   
@@ -252,7 +255,7 @@ const Dashboard = () => {
     }
   }, []);
   const options = {
-   
+   legend:"none",
     title:"All Tests Metrics",
     pieStartAngle: 100,
   };
@@ -333,42 +336,66 @@ const Dashboard = () => {
   </Popup>
                 </div>
         </div>
-      <div style={{display:"flex",flexDirection:"column"}}>
+      <div style={{display:"flex",flexDirection:"Column"}}>
         <h1 style={{textAlign:"center",marginBottom:'20px',"@media (max-width:820px)":{
           textAlign:"left",marginLeft:"20px"
         } }}>AMS METRICS</h1>
+       <h2 className="allmetricsHeadining">This metrics all about number of Tests taken by candidate for each test </h2>
+        <div>
+        <button style={{height:"20px",width:"40px",backgroundColor:"#e89510",border:"0px"}}></button>
+       <span>Python</span>
+      <button style={{height:"20px",width:"40px",backgroundColor:"#e62e81",border:"0px"}}></button>
+        <span>Java</span>
+        <button style={{height:"20px",width:"40px",backgroundColor:"#5c9ed1",border:"0px"}}></button>
+        <span>FullStack</span>
+        <button style={{height:"20px",width:"40px",backgroundColor:"#963596",border:"0px"}}></button>
+        <span>QA</span>
+        <button style={{height:"20px",width:"40px",backgroundColor:"#2b8a3c ",border:"0px"}}></button>
+        <span>Froentend fresher</span>
+        <button style={{height:"20px",width:"40px",backgroundColor:"#0e3ab3",border:"0px"}}></button>
+        <span>Fresher Junior</span>
+        <button style={{height:"20px",width:"40px",backgroundColor:"#f05232 ",border:"0px"}}></button>
+        <span>Fresher Test</span>
+        <button style={{height:"20px",width:"40px",backgroundColor:"#62b027",border:"0px"}}></button> 
+        <span>Mern Intermediate</span>
+        <button style={{height:"20px",width:"40px",backgroundColor:"#b02709",border:"0px"}}></button>   
+        <span>Mern Junior</span>
+        <button style={{height:"20px",width:"40px",backgroundColor:"#102061",border:"0px"}}></button>
+        <span>Shopify</span>
+        <button  className="totaltestconductedbutton" style={{backgroundColor:"#5c93d1",color:"wheat", fontSize:"20px", fontFamily:"roboto", marginLeft:"100px" , border:"none",height:"50px"}}>TotalTestsConducted:{fresher+fullStack+python+freshersJunior+frontendfresher+qa+java+shopify+merndeveloperintermediate+merndeveloperjunior}</button>
 
+            </div>
+       
         <Chart
-        style={{
-          marginLeft:'0px',
-          width:'700px',
-          height:'700px',"@media (max-width:768px) ":{
-            width:"200px",
-            height:"200px",
-            marginTop:"0px",
-          }
-        }}
+        className="allstremsPiechart"
         chartType="PieChart"
         data={pieData}
-        options={options}
+        options={{
+          colors:["#0e3ab3","#f05232","#e89510","#2b8a3c","#963596","#5c9ed1","#e62e81","#62b027","#b02709","#102061"],
+          title:"All Test Metrics",legend:"none"
+        }}
       ></Chart>
       
         </div>
+        <h3 className="allmetricsHeadining">This metrics  about percentage of every section which are correctly answered by candidate </h3>
+
        <div>
        <button style={{backgroundColor:"#aed25d" ,height:"20px",width:"40px",border:"none"}}></button>
-       <span>Apptitude__correct_answers_Percentage</span> ; 
+       <span>Apptitude</span> 
        <button style={{backgroundColor:"#6f6fed" ,height:"20px",width:"40px",border:"none",marginLeft:"10px"}}></button>
-        <span>Technical_correct_answers_Percentage</span>;
+        <span>Technical</span>
         <button style={{backgroundColor:"#9f93ed" ,height:"20px",width:"40px",border:"none",marginLeft:"10px"}}></button>
-        <span>FresherJunior_Reasioning_correct_answers_Percentage</span><br></br>;
+        <span>Reasoing</span>
         <button style={{backgroundColor:"#468f0a" ,height:"20px",width:"40px",border:"none",marginLeft:"10px"}}></button>
-        <span>Fullstack_Java_Correct_Answers_Percentage</span>;
+        <span>Java</span>
         <button style={{backgroundColor:"#4d71bd" ,height:"20px",width:"40px",border:"none",marginLeft:"10px"}}></button>
-        <span>Fullstack_React_Correct_Answeres_Percentage</span>
+        <span>React</span>
        </div>
         <div className="dashboard_chart_container">
        
+
        <Chart 
+       className="testwisePiechart"
         chartType="PieChart"
         data={fresherPieData}
         options={{
@@ -376,17 +403,10 @@ const Dashboard = () => {
           colors:["#aed25d","#6f6fed"],
           legend:"none"
         }}
-        style={{
-          marginLeft:'10px',
-          width:'400px',
-          height:'400px',"@media (max-width:768px)and (max-height:768px) ":{
-            width:"200px",
-            height:"200px",
-            marginLeft:"20px"
-          }
-        }}
+       
       />
       <Chart
+        className="testwisePiechart"
         chartType="PieChart"
         data={pythonPieData}
         options={{
@@ -394,58 +414,33 @@ const Dashboard = () => {
           colors:["#aed25d","#6f6fed"],
           legend:"none"
         }}
-        style={{
-          marginLeft:'10px',
-         
-          width:'400px',
-          height:'400px',"@media (max-width:768px) and (max-height:768px)":{
-            width:"200px",
-            height:"200px",
-            marginLeft:"20px"
-          }
-        }}
+       
       />
       <Chart
+        className="testwisePiechart"
         chartType="PieChart"
         data={fullStackPieData}
         options={{
           title:"FullStack Test Metrics",
           colors:["#468f0a","#4d71bd"],
           legend:"none"
-        }}        style={{
-          marginLeft:'10px',
-          marginRight:'10px',
-          width:'400px',
-          height:'400px',
-          "@media (max-width:768px) and (max-height:768px)":{
-            width:"200px",
-            height:"200px",
-            marginLeft:"20px"
-          }
-        }} 
+        }}       
       /> 
       {/* </div> */}
       {/* <div className="dashboard_chart_container"> */}
       <Chart
+        className="testwisePiechart"
         chartType="PieChart"
         data={javaPieData}
         options={{
           title:"Java Test Metrics",
           colors:["#aed25d","#6f6fed"],
           legend:"none"
-        }}        style={{
-          marginLeft:'10px',
-          width:'400px',
-          height:'400px',
-          "@media (max-width:768px) and and (max-height:768px) ":{
-            width:"200px",
-            height:"200px",
-            marginLeft:"20px"
-          }
-        }} 
+        }}        
       
       />
       <Chart
+        className="testwisePiechart"
         chartType="PieChart"
         data={qaPieData}
         options={{
@@ -453,38 +448,17 @@ const Dashboard = () => {
           colors:["#aed25d","#6f6fed"],
           legend:"none"
         }}
-        style={{
-          marginLeft:'10px',
-          marginRight:'10px',
-          width:'400px',
-          height:'400px',
-          "@media (max-width:768px) and (max-height:768px) ":{
-            width:"200px",
-            height:"200px",
-            marginLeft:"20px"
-          }
-        }} 
       
       />
       <Chart 
+        className="testwisePiechart"
         chartType="PieChart"
         data={frontendfresherPieData}
         options={{
           title:"FroentFresher Test Metrics",
           colors:["#aed25d","#6f6fed"],
           legend:"none"
-        }}        style={{
-          marginLeft:'10px',
-          marginRight:'10px',
-          width:'400px',
-          height:'400px',
-          "@media (max-width:768px) and (max-height:768px)":{
-            width:"200px",
-            height:"200px",
-            marginLeft:"20px"
-          }
-        }} 
-        
+        }}        
       />
    
       {/* </div>
@@ -492,66 +466,39 @@ const Dashboard = () => {
       <div style={{display:'flex',alignItems:"center",flexWrap:"wrap"}}> */}
 
       <Chart
+             className="testwisePiechart"
         chartType="PieChart"
         data={freshersJuniorPieData}
         options={{
           title:"FresherJunior Test Metrics",
           colors:["#aed25d","#9f93ed"],
           legend:"none"
-        }}        style={{
-          marginLeft:'10px',
-          marginRight:'10px',
-          width:'400px',
-          height:'400px',
-          "@media (max-width:768px) and (max-height:768px)":{
-            width:"200px",
-            height:"200px",
-            marginLeft:"20px"
-          }
-        }} 
-       
+        }}      
       />
       <Chart
+             className="testwisePiechart"
         chartType="PieChart"
         data={merndeveloperJuniorPieData}
         options={{
           title:"MernDeveloper Junior Test Metrics",
           colors:["#aed25d","#6f6fed"],
           legend:"none"
-        }}        style={{
-          marginLeft:'10px',
-          marginRight:'10px',
-          width:'400px',
-          height:'400px',
-          "@media (max-width:768px) and (max-height:768px)":{
-            width:"200px",
-            height:"200px",
-            marginLeft:"20px"
-          }
-        }} 
+        }}       
       />
-      <Chart
+      <Chart     
+       className="testwisePiechart"
         chartType="PieChart"
         data={merndeveloperintermediatePieData}
         options={{
           title:"MernDeveloperIntermediate Test Metrics",
           colors:["#aed25d","#6f6fed"],
           legend:"none"
-        }}        style={{
-          marginLeft:'10px',
-          marginRight:'10px',
-          width:'400px',
-          height:'400px',
-          "@media (max-width:768px) and (max-height:768px)":{
-            width:"200px",
-            height:"200px",
-            marginLeft:"20px"
-          }
-        }} 
+        }}        
       />
       {/* </div>
      <div> */}
-     <Chart
+     <Chart     
+      className="testwisePiechart"
         chartType="PieChart"
         data={shopifyPieData}
         options={{
@@ -559,17 +506,7 @@ const Dashboard = () => {
           colors:["#aed25d","#6f6fed"],
           legend:"none"
         }}
-        style={{
-          marginLeft:'10px',
-          marginRight:'10px',
-          width:'400px',
-          height:'400px',
-          "@media (max-width:768px)and (max-height:768px) ":{
-            width:"200px",
-            height:"200px",
-            marginLeft:"20px"
-          }
-        }} 
+       
       />
      </div>
     </>

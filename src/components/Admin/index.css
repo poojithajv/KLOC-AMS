@@ -54,7 +54,6 @@
   align-items: center;
 }
 
-<<<<<<< HEAD
 .not-found-container {
   display: flex;
   flex-direction: column;
@@ -92,18 +91,42 @@
 
 .dashboard_chart_container{
   display: flex;
-  align-items:start;
+  align-items:center;
   flex-wrap: wrap;
+  
 }
 
-@media(max-width:"768px") {
+@media screen and (max-width:768px) {
   .dashboard_chart_container{
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: start;
+    margin: auto;
+  
+  }
+}
+
+@media screen and (max-width:393px){
+  .dashboard_chart{
+    display: flex;
+    margin-left: 80px;
     align-items: center;
-    justify-content:center;
-    margin-left: 30px;
-    
+  }
+}
+
+@media screen and (max-width:280px){
+  .dashboard_chart{
+    display: flex;
+    margin-left: 80px;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width:412px){
+  .dashboard_chart{
+    display: flex;
+    margin-left: 120px;
+    align-items: center;
   }
 }
 
@@ -126,8 +149,6 @@
 
 /*Assessement container styles*/
 
-=======
->>>>>>> 14d899ffc2b72724caa4b51fa41e51a93cd91059
 .assessment-container {
   background-color: rgb(231, 230, 230);
   padding: 20px;
@@ -378,7 +399,7 @@ input::-webkit-inner-spin-button {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+padding: 20px;  
 }
 @media screen and (max-width:1279px){
   .chart-container{
@@ -419,4 +440,73 @@ input::-webkit-inner-spin-button {
   .send{
     width:100px;
   }
+}
+.totaltestconductedbutton{
+  border-radius: 3px solid ;
+}
+
+.allstremsPiechart{
+  height: 600px;
+  width: 600px;
+  margin-left: 0px;
+}
+
+@media screen and (max-width:768px) {
+  .allstremsPiechart{
+  height: 400px;
+  width: 400px;
+  }
+  
+}
+@media  (max-width:375px) {
+  .allstremsPiechart{
+  height: 300px;
+  width: 300px;
+  }
+  
+}
+
+
+.testwisePiechart{
+  height: 400px;
+  width: 400px;
+  margin-left: 0px;
+}
+@media screen and (max-width:768px){
+  .testwisePiechart{
+    height: 300px;
+    width:300px;
+    margin-left: 30px;
+  }
+
+}
+@media screen  and (max-width:375px){
+  .testwisePiechart{
+    height: 150px;
+    width: 150px;
+    margin-left: 20px;
+  }
+}
+.allmetricsHeadining{
+  color: gray;
+  margin-left: 20px;
+  font-size: 28px;
+}
+@media  screen and (max-width:375px) {
+  .allmetricsHeadining{
+    font-size: 16px;
+    margin-left: 10px;
+  }
+}
+
+.teswisemetricsHeading{
+  color: gray;
+  margin-left: 20px;
+  font-size: 28px;
+}
+@media screen and (max-width:375px) {
+ .teswisemetricsHeading{
+  margin-left: 10px;
+  font-size: 16x;
+ }
 }

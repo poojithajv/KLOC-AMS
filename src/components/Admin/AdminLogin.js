@@ -1,4 +1,4 @@
-// import all required packages like react,react-icons,reactjs-popup,js-cookie,uuid,react-router-dom and components like index.css to render AdminLogin component
+// import all required packages like react, react-icons, reactjs-popup, js-cookie, uuid, react-router-dom and components like index.css to render AdminLogin component
 import React, { useEffect, useState } from "react";
 import {GiHamburgerMenu} from "react-icons/gi"
 import Popup from 'reactjs-popup';
@@ -945,9 +945,9 @@ useEffect(()=>{
                     {/* when clicking this Assessments text, it'll navigates to send assessments route */}
                     <li onClick={()=>navigate('/sendAssessments',{state:finalData})} className='admin-header-navbar-link'>Assessments</li>
                     {/* when clicking this Test Reports text, it'll navigates to test reports route */}
-                    <li onClick={()=>navigate('/testReports',{state:finalData})} className='admin-header-navbar-link'>Test Resports</li>
+                    <li onClick={()=>navigate('/testReports',{state:finalData})} className='admin-header-navbar-link'>Test Reports</li>
                     {/* when clicking this student reports text, it'll navigates to student reports route */}
-                    <li onClick={()=>navigate('/studentReports',{state:finalData})} className='admin-header-navbar-link'>Student Resports</li>
+                    <li onClick={()=>navigate('/studentReports',{state:finalData})} className='admin-header-navbar-link'>Student Reports</li>
                     {/* when clicking this Sign Out text, it'll navigates to admin login route and agains admin needs to sign in to access all routes */}
                     <li onClick={handleSignOut} className='admin-header-navbar-link'>Sign Out</li>
                   </ul>

@@ -2,7 +2,7 @@
   margin: 0px;
   padding: 0px;
 }
-/* Admin Header*/
+/* AdminLogin and TestReports conmponents css*/
 .admin-header-container{
   padding-left:30px;
   background-color:#1d1a69;
@@ -107,4 +107,12 @@
   margin-right: 8px;
   width: 18px;
   height: 18px;
+}
+
+/* TestReports component css */
+.test-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:center;
+  align-items: center;
 }

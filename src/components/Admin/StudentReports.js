@@ -1,26 +1,34 @@
+// import all required packages like react, react-icons, reactjs-popup, js-cookie, react-router-dom and css file StudentReports.css for styling
 import React,{useState,useEffect} from 'react'
 import {GiHamburgerMenu} from "react-icons/gi"
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import Cookies from 'js-cookie'
-import { useNavigate } from 'react-router-dom'
-import { useLocation } from 'react-router-dom'
+import { useNavigate,useLocation } from 'react-router-dom'
 import './StudentReports.css'
+
 function StudentReports() {
+  // location varaiable to get location of the testReports route and state
     const location=useLocation()
     const [search,setSearch]=useState('')
+    // useState of data to store all tests data responses
     const [data,setData]=useState(location.state)
     let data1=data.allData.flat()
+    // filterData useState used to store filtered data responses
     const [filterData, setFilterData] = useState(data1);
+    // startDate useState to store start Date 
     const [startDate, setStartDate] = useState("");
+    // endDate useState to store end Date
     const [endDate, setEndDate] = useState("");
-
+    // navigate variable used to naviagating to different routes
     const navigate=useNavigate()
 
+    // handleSearch function to set the search value to setSearch function
     const handleSearch=(e)=>{
         setSearch(e.target.value)
     }
 
+    // handleFilter function used to filter the all tests data responses using start date and end date
     const handleFilter = () => {
       const filtered = data1.filter((item) => {
         const itemDate = new Date(item.Timestamp);
@@ -29,50 +37,71 @@ function StudentReports() {
         end.setDate(end.getDate() + 1); // Added one day to the end date
         return itemDate >= start && itemDate <= end;
       });
+      // set filter data array to setFilterData function
       setFilterData(filtered);
     };
+    // filteredData variable used to store all filtered tests data reponses by email id search
     const filteredData=filterData.filter(i=>i.Email_Address.toLowerCase().includes(search.toLowerCase()))
 
+    // after component rendering, the below effect will run only once with empty dependency array
     useEffect(() => {
+      // token varaible to get token value
       const token = Cookies.get("token");
       if (!token) {
+        // if token is undefined, notFound Component will be navigated
         navigate("/notFound");
       }
     }, []);
   return (
     <div className='student-reports-container'>
-    <div className="admin-header-container">
-      <div className="admin-header-logo-container">
-              <img src="https://res.cloudinary.com/dufx8zalt/image/upload/v1687419355/logoimage1_krvkbq.png" alt="logo" style={{height:'50px', width:'100px', borderRadius:'10px'}} onClick={()=>navigate('/')}/>
-              </div>
-              <div className="admin-desktop-header-navbar-container">
-              <p onClick={()=>navigate('/dashboard',{state:data})} className="admin-desktop-header-navbar-link">Dashboard</p>
-              <p onClick={()=>navigate('/sendAssessments',{state:data})} className="admin-desktop-header-navbar-link">Assessments</p>
-              <p onClick={()=>navigate('/testReports',{state:data})} className="admin-desktop-header-navbar-link">Test Reports</p>
-              <p onClick={()=>navigate('/studentReports',{state:data})} className="admin-desktop-header-navbar-link">Student Reports</p>
-              <p className="admin-desktop-header-navbar-link" onClick={()=> navigate('/adminLogin')}>Admin</p>
-                </div>
-                <div className="admin-mobile-header-navbar-container">
-                      <Popup contentStyle={{ width: '50%',backgroundColor:"white" }} trigger={<button  className="admin-hamburger-btn"><GiHamburgerMenu /></button>} position="bottom right" >
-                    <ul className="admin-mobile-hamburger-menu">
-                      <li onClick={()=>navigate('/dashboard',{state:data})} className='admin-header-navbar-link'>Dashboard</li>
-                      <li onClick={()=>navigate('/sendAssessments',{state:data})} className='admin-header-navbar-link'>Assessments</li>
-                      <li onClick={()=>navigate('/testReports',{state:data})} className='admin-header-navbar-link'>Test Resports</li>
-                      <li onClick={()=>navigate('/studentReports',{state:data})} className='admin-header-navbar-link'>Student Resports</li>
-                      <li onClick={()=> navigate('/adminLogin')} className='admin-header-navbar-link'>Admin</li>
-                      </ul>
-                    </Popup>
-                      </div>
+      {/* header for desktop  with Logo and components Dashboard, Assessments, Test Reports, Student Reports and Admin */}
+      <div className="admin-header-container">
+        <div className="admin-header-logo-container">
+          {/* logo */}
+          <img src="https://res.cloudinary.com/dufx8zalt/image/upload/v1687419355/logoimage1_krvkbq.png" alt="logo" style={{height:'50px', width:'100px', borderRadius:'10px'}} onClick={()=>navigate('/')}/>
+        </div>
+        <div className="admin-desktop-header-navbar-container">
+          {/* when clicking this Dashboard text, it'll navigates to dashboard route */}
+          <p onClick={()=>navigate('/dashboard',{state:data})} className="admin-desktop-header-navbar-link">Dashboard</p>
+          {/* when clicking this Assessments text, it'll navigates to send assessments route */}
+          <p onClick={()=>navigate('/sendAssessments',{state:data})} className="admin-desktop-header-navbar-link">Assessments</p>
+          {/* when clicking this Test Reports text, it'll navigates to test reports route */}
+          <p onClick={()=>navigate('/testReports',{state:data})} className="admin-desktop-header-navbar-link">Test Reports</p>
+          {/* when clicking this student reports text, it'll navigates to student reports route */}
+          <p onClick={()=>navigate('/studentReports',{state:data})} className="admin-desktop-header-navbar-link">Student Reports</p>
+          {/* when clicking this Sign Out text, it'll navigates to admin login route and again admin can access all routes */}
+          <p className="admin-desktop-header-navbar-link" onClick={()=> navigate('/adminLogin')}>Admin</p>
+        </div>
+        {/* nav header for mobile  with Logo and components Dashboard, Assessments, Test Reports, Student Reports and Admin */}
+        <div className="admin-mobile-header-navbar-container">
+          <Popup contentStyle={{ width: '50%',backgroundColor:"white" }} trigger={<button  className="admin-hamburger-btn"><GiHamburgerMenu /></button>} position="bottom right" >
+            <ul className="admin-mobile-hamburger-menu">
+              {/* when clicking this Dashboard text, it'll navigates to dashboard route */}
+              <li onClick={()=>navigate('/dashboard',{state:data})} className='admin-header-navbar-link'>Dashboard</li>
+              {/* when clicking this Assessments text, it'll navigates to send assessments route */}
+              <li onClick={()=>navigate('/sendAssessments',{state:data})} className='admin-header-navbar-link'>Assessments</li>
+              {/* when clicking this Test Reports text, it'll navigates to test reports route */}
+              <li onClick={()=>navigate('/testReports',{state:data})} className='admin-header-navbar-link'>Test Reports</li>
+              {/* when clicking this student reports text, it'll navigates to student reports route */}
+              <li onClick={()=>navigate('/studentReports',{state:data})} className='admin-header-navbar-link'>Student Reports</li>
+              {/* when clicking this Sign Out text, it'll navigates to admin login route and again admin can access all routes */}
+              <li onClick={()=> navigate('/adminLogin')} className='admin-header-navbar-link'>Admin</li>
+            </ul>
+          </Popup>
+        </div>
     </div>  
-    <div className='table-reports-container'>
+    {/* search input, filter by date and table containers */}
+      <div className='table-reports-container'>
         <h1 style={{marginBottom:'15px'}}>Student Data</h1>
+        {/* search input container */}
         <div className='input-label-container'>
           <label htmlFor="search">
                 Search by Student Email : 
           </label>
           <input id="search" value={search} type="text" onChange={handleSearch} style={{marginBottom:'20px',marginLeft:'25px'}} className='input-search'/>
         </div>
-          <div className='date-filter'>
+        {/* filter with start date, end date and filter button */}
+        <div className='date-filter'>
           <div className='display-between'>
             Start Date:{"   "}
             <input
@@ -93,7 +122,8 @@ function StudentReports() {
           </div>
           <button style={{padding:'2px',width:'60px'}} onClick={handleFilter}>Filter</button>
         </div>
-      <div className='desktop-table-container'>
+        {/* desktop table container with table with all tests data responses */}
+        <div className='desktop-table-container'>
         {filteredData.length >0  ? <table border="2px">
             <thead >
                 <tr>
@@ -128,6 +158,7 @@ function StudentReports() {
                         <td>{item.reasoning_score===undefined ? 'NA' : item.reasoning_score}</td>
                         <td>{item.testType}</td>
                         <td>
+                          {/* clicking view button it'll navigates to studentChart route */}
                             <button onClick={()=>navigate('/studentChart',{state:item})} style={{padding:'3px',width:'60px'}} >
                                 View
                             </button>
@@ -137,6 +168,7 @@ function StudentReports() {
             </tbody>
         </table> :'No Data Found'}
         </div>
+        {/* mobile table container with all tests data responses cards */}
         <div className='mobile-table-container'>
         {filteredData.length >0  ? (
           filteredData.map((item,index)=>
@@ -181,14 +213,14 @@ function StudentReports() {
               <p>Test Type</p>
               <p className='td'>{item.testType}</p>
             </div>
+            {/* clicking view button it'll navigates to studentChart route */}
             <div className='view-button'>
               <button className='btn' onClick={()=>navigate('/studentChart',{state:item})}>View Score</button>
             </div>
           </div>
-          
         ) ) : 'No Data Found'}
         </div>
-        </div>
+      </div>
     </div>
   )
   

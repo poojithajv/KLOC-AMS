@@ -652,9 +652,9 @@ useEffect(()=>{
                     }
                 }
             }else if(i>15 && i<56){
-              console.log(item[score],i-15)
-              console.log(technical[i-15],i-15)
-              console.log(item[score]===technical[i-15])
+              // console.log(item[score],i-15)
+              // console.log(technical[i-15],i-15)
+              // console.log(item[score]===technical[i-15])
                 if ((i-15) in technical){           
                     if (item[score]===technical[i-15]){
                         technical_score+=1
@@ -684,15 +684,17 @@ useEffect(()=>{
         Object.keys(item).map((score,i)=>{
             if (i>5 && i<31){
                 if ((i-5) in aptitude){
-                    // console.log(item[score])
+                  // console.log(aptitude[i-5])
+                  // console.log(item[score])
                     if (item[score]===aptitude[i-5]){
                         aptitude_score+=1
                     }
                 }
             }else if(i>30 && i<56){
                 if ((i-30) in reasoning){ 
-                    // console.log(item[score])   
-                    // console.log(technical[i-30])           
+                  // console.log(item[score],i-30)
+                  // console.log(reasoning[i-30],i-30)
+                  // console.log(item[score]===reasoning[i-30])           
                     if (item[score]===reasoning[i-30]){
                         reasoning_score+=1
                     }
@@ -700,7 +702,7 @@ useEffect(()=>{
             }
         })
         // console.log('aptitude_score',aptitude_score)
-        // console.log('technical_score',technical_score)
+        // console.log('technical_score',reasoning_score)
         item.aptitude_score=aptitude_score
         item.reasoning_score=reasoning_score
         item.total_score =  aptitude_score + reasoning_score

@@ -14,22 +14,19 @@ function Home() {
               <img src="https://res.cloudinary.com/dufx8zalt/image/upload/v1687419355/logoimage1_krvkbq.png" alt="logo" style={{height:'50px', width:'100px', borderRadius:'10px'}}/>
               </div>
               <div className="desktopHeaderNavbarContainer">
-              <p onClick={()=>navigate('/')} className='headerNavbarLink'>Home</p>
-              <p onClick={()=>navigate('/studentLogin')} className='headerNavbarLink'>Student</p>
-              <p onClick={()=>navigate('/adminLogin')} className='headerNavbarLink'>Admin</p>
+              <p onClick={()=>navigate('/')} className='headerDesktopNavbarLink'>Home</p>
+              <p onClick={()=>navigate('/studentLogin')} className='headerDesktopNavbarLink'>Student</p>
+              <p onClick={()=>navigate('/adminLogin')} className='headerDesktopNavbarLink'>Admin</p>
               </div>
-              <div className="mobileHeaderNavbarContainer">
-              
-              <Popup  style = {{background:"yellow"}} trigger={<button  className="hamburger-btn"><GiHamburgerMenu /></button>} position="bottom" className="mobile-hamburger-menu-container">
-              <div className="mobile-hamburger-menu-container">
-              <ul className="mobile-hamburger-menu">
-                <li onClick={()=>navigate('/')} className='headerNavbarLink'>Home</li>
-                <li onClick={()=>navigate('/studentLogin')} className='headerNavbarLink'>Student</li>
-                <li onClick={()=>navigate('/adminLogin')} className='headerNavbarLink'>Admin</li>
-                </ul>
-                </div>
-  </Popup>
-              </div>
+              <div className="admin-mobile-header-navbar-container">
+                      <Popup contentStyle={{ width: '50%',backgroundColor:"white" }} trigger={<button  className="admin-hamburger-btn"><GiHamburgerMenu /></button>} position="bottom right" >
+                    <ul className="admin-mobile-hamburger-menu">
+                      <li onClick={()=>navigate('/')} className='headerNavbarLink'>Home</li>
+                      <li onClick={()=>navigate('/studentLogin')} className='headerNavbarLink'>Student</li>
+                      <li onClick={()=>navigate('/adminLogin')} className='headerNavbarLink'>Admin</li>
+                      </ul>
+                    </Popup>
+                      </div>
               </div>
         <div style={{display:'flex',justifyContent:'center',alignItems:'center',marginTop:'300px'}}>
             KLOC HIREME

@@ -15,19 +15,8 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const [finalData,setFinalData]=useState(location.state)
   
-  // const [isOpen, setIsOpen] = useState(false)
-  // const clickHamburger = () => {
-  //   setIsOpen(!isOpen)
-  // }
-
-  // const handleClose = () => {
-  //   setIsOpen(!isOpen)
-  // }
 
   const data=finalData.datat
-  // const TotalDataLength=data.freshersJuniorData.length+data.fresherData.length+data.pythonData.length+
-  // data.mernDeveloperIntermediateData.length+data.shopifyData.length+data.frontEndFresherData.length+
-  // data.fullStackData.length+data.javaData.length+data.mernDeveloperJuniorData.length+data.qaData.length
   const fresher=data.fresherData.length
   console.log(fresher)
   const freshersJunior=data.freshersJuniorData.length
@@ -313,25 +302,23 @@ const Dashboard = () => {
               <img src="https://res.cloudinary.com/dufx8zalt/image/upload/v1687419355/logoimage1_krvkbq.png" alt="logo" style={{height:'50px', width:'100px', borderRadius:'10px'}} onClick={()=>navigate('/')}/>
               </div>
               <div className="admin-desktop-header-navbar-container">
-              <p onClick={()=>navigate('/dashboard',{state:finalData})} className="admin-header-navbar-link">Dashboard</p>
-              <p onClick={()=>navigate('/sendAssessments',{state:finalData})} className="admin-header-navbar-link">Assessments</p>
-              <p onClick={()=>navigate('/testReports',{state:finalData})} className="admin-header-navbar-link">Test Reports</p>
-              <p onClick={()=>navigate('/studentReports',{state:finalData})} className="admin-header-navbar-link">Student Reports</p>
-              <p className="admin-header-login" onClick={()=> navigate('/adminLogin')}>Admin</p>
+              <p onClick={()=>navigate('/dashboard',{state:finalData})} className="admin-desktop-header-navbar-link">Dashboard</p>
+              <p onClick={()=>navigate('/sendAssessments',{state:finalData})} className="admin-desktop-header-navbar-link">Assessments</p>
+              <p onClick={()=>navigate('/testReports',{state:finalData})} className="admin-desktop-header-navbar-link">Test Reports</p>
+              <p onClick={()=>navigate('/studentReports',{state:finalData})} className="admin-desktop-header-navbar-link">Student Reports</p>
+              <p className="admin-desktop-header-navbar-link" onClick={()=> navigate('/adminLogin')}>Admin</p>
                 </div>
                 <div className="admin-mobile-header-navbar-container">
-                <Popup trigger={<button  className="admin-hamburger-btn"><GiHamburgerMenu /></button>} position="bottom" >
-              <div className="admin-mobile-hamburger-menu-container">
-              <ul className="admin-mobile-hamburger-menu">
-                <li onClick={()=>navigate('/dashboard',{state:finalData})} className='admin-header-navbar-link'>Dashboard</li>
-                <li onClick={()=>navigate('/sendAssessments',{state:finalData})} className='admin-header-navbar-link'>Assessments</li>
-                <li onClick={()=>navigate('/testReports',{state:finalData})} className='admin-header-navbar-link'>Test Resports</li>
-                <li onClick={()=>navigate('/studentReports',{state:finalData})} className='admin-header-navbar-link'>Student Resports</li>
-                <li onClick={()=> navigate('/adminLogin')} className="admin-header-login">Admin</li>
-                </ul>
-                </div>
-  </Popup>
-                </div>
+                      <Popup contentStyle={{ width: '50%',backgroundColor:"white" }} trigger={<button  className="admin-hamburger-btn"><GiHamburgerMenu /></button>} position="bottom right" >
+                    <ul className="admin-mobile-hamburger-menu">
+                      <li onClick={()=>navigate('/dashboard',{state:finalData})} className='admin-header-navbar-link'>Dashboard</li>
+                      <li onClick={()=>navigate('/sendAssessments',{state:finalData})} className='admin-header-navbar-link'>Assessments</li>
+                      <li onClick={()=>navigate('/testReports',{state:finalData})} className='admin-header-navbar-link'>Test Resports</li>
+                      <li onClick={()=>navigate('/studentReports',{state:finalData})} className='admin-header-navbar-link'>Student Resports</li>
+                      <li onClick={()=> navigate('/adminLogin')} className='admin-header-navbar-link'>Admin</li>
+                      </ul>
+                    </Popup>
+                      </div>
         </div>
       <div style={{display:"flex",flexDirection:"column"}}>
         <h1 style={{textAlign:"center",marginBottom:'20px',"@media (max-width:820px)":{

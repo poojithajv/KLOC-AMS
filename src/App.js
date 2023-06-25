@@ -38,8 +38,6 @@ const App = () => {
         <Routes>
           {/* Home component */}
           <Route path='/' element={<Home />} />
-
-
           {/* admin components */}
           <Route path='/adminLogin' element={<AdminLogin />} />
           <Route path='/testReports' element={<TestReports />} />

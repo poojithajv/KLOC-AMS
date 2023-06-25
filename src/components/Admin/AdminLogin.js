@@ -5,6 +5,7 @@ import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import Cookies from "js-cookie";
 import { v4 as uuidv4 } from "uuid";
+import { gapi } from "gapi-script";
 import { useNavigate } from "react-router-dom";
 import "./AdminLogin.css";
 // scopes variable is a google api to get access of google spreadsheets

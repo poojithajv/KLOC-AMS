@@ -1,3 +1,4 @@
+// import all required packages like react, react-icons, reactjs-popup, js-cookie, uuid, react-router-dom and components like index.css to render AdminLogin component
 import React, { useEffect, useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import Popup from "reactjs-popup";
@@ -5,7 +6,8 @@ import "reactjs-popup/dist/index.css";
 import Cookies from "js-cookie";
 import { v4 as uuidv4 } from "uuid";
 import { useNavigate } from "react-router-dom";
-import "./index.css";
+import "./AdminLogin.css";
+// scopes variable is a google api to get access of google spreadsheets
 const SCOPES = "https://www.googleapis.com/auth/spreadsheets.readonly";
 
 const AdminLogin = () => {
@@ -29,7 +31,8 @@ const AdminLogin = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    //  after component rendering the above logic will execute
+    //  after component rendering the below logic will execute
+    // creates script element and appends to html head
     const loadGoogleAPI = () => {
       const script = document.createElement("script");
       script.src = process.env.REACT_APP_SCRIPT_SRC;
@@ -37,10 +40,12 @@ const AdminLogin = () => {
       document.head.appendChild(script);
     };
 
+    // to initialize the google api
     const initializeGoogleAPI = () => {
       window.gapi.load("client:auth2", initClient);
     };
 
+    // to initialize the google api client using apikey, client id, scopes and discoveryDocs from google cloudspace
     const initClient = () => {
       window.gapi.client
         .init({
@@ -53,9 +58,11 @@ const AdminLogin = () => {
         })
         .then(() => {
           console.log("Google API client initialized");
+          // auth instance variable used to get signed in
           const authInstance = window.gapi.auth2.getAuthInstance();
           setIsSignedIn(authInstance.isSignedIn.get());
           authInstance.isSignedIn.listen(updateSignInStatus);
+          // execute request functions to get google sheet data responses for different tests
           executeRequestFreshersTest();
           executeRequestPythonTest();
           executeRequestShopifyTest();
@@ -68,13 +75,16 @@ const AdminLogin = () => {
           executeRequestFreshersJuniorTest();
           getUserEmail();
         })
+        // throws error if any error occurs while initializing google api client
         .catch((error) => {
           console.error("Error initializing Google API client", error);
         });
     };
 
+    // update signin status function
     const updateSignInStatus = (isUserSignedIn) => {
       setIsSignedIn(isUserSignedIn);
+      // if user is signedIn, getUserEmail function will render else userEmail variable will be set to empty
       if (isUserSignedIn) {
         getUserEmail();
       } else {
@@ -92,7 +102,9 @@ const AdminLogin = () => {
         })
         .then((response) => {
           const values = response.result.values || [];
+          // headers variable refers to row that consists of column names of respones
           const headers = values[0];
+          // jsonData refers to array of data responses from the google spreadsheet
           const jsonData = values.slice(1).map((row) => {
             const item = {};
             row.forEach((value, index) => {
@@ -103,7 +115,7 @@ const AdminLogin = () => {
           // storing freshers test responses data in setFresherData function
           setFresherData(jsonData);
         })
-        // display errors while executing request to get data
+        // throws error if any error occurs while executing request to get data
         .catch((error) => {
           console.error("Error executing request", error);
         });
@@ -119,7 +131,9 @@ const AdminLogin = () => {
         })
         .then((response) => {
           const values = response.result.values || [];
+          // headers variable refers to row that consists of column names of respones
           const headers = values[0];
+          // jsonData refers to array of data responses from the google spreadsheet
           const jsonData = values.slice(1).map((row) => {
             const item = {};
             row.forEach((value, index) => {
@@ -127,15 +141,16 @@ const AdminLogin = () => {
             });
             return item;
           });
-          // storing python test responses data in setFresherData function
+          // storing python test responses data in setPythonData function
           setPythonData(jsonData);
         })
-        // display errors while executing request to get data
+        // throws error if any error occurs while executing request to get data
         .catch((error) => {
           console.error("Error executing request", error);
         });
     };
 
+    // Executes request to get google sheet responses data for shopify test using spreadsheet id and name
     const executeRequestShopifyTest = () => {
       if (isSignedIn) return; // Don't execute if user is not signed in
       window.gapi.client.sheets.spreadsheets.values
@@ -145,7 +160,9 @@ const AdminLogin = () => {
         })
         .then((response) => {
           const values = response.result.values || [];
+          // headers variable refers to row that consists of column names of respones
           const headers = values[0];
+          // jsonData refers to array of data responses from the google spreadsheet
           const jsonData = values.slice(1).map((row) => {
             const item = {};
             row.forEach((value, index) => {
@@ -153,13 +170,16 @@ const AdminLogin = () => {
             });
             return item;
           });
+          // storing shopify test responses data in setShopifyData function
           setShopifyData(jsonData);
         })
+        // throws error if any error occurs while executing request to get data
         .catch((error) => {
           console.error("Error executing request", error);
         });
     };
 
+    // Executes request to get google sheet responses data for front end fresher test using spreadsheet id and name
     const executeRequestFrontEndFresherTest = () => {
       if (isSignedIn) return; // Don't execute if user is not signed in
       window.gapi.client.sheets.spreadsheets.values
@@ -169,7 +189,9 @@ const AdminLogin = () => {
         })
         .then((response) => {
           const values = response.result.values || [];
+          // headers variable refers to row that consists of column names of respones
           const headers = values[0];
+          // jsonData refers to array of data responses from the google spreadsheet
           const jsonData = values.slice(1).map((row) => {
             const item = {};
             row.forEach((value, index) => {
@@ -177,13 +199,16 @@ const AdminLogin = () => {
             });
             return item;
           });
+          // storing front end fresher test responses data in setfrontEndFresherData function
           setfrontEndFresherData(jsonData);
         })
+        // throws error if any error occurs while executing request to get data
         .catch((error) => {
           console.error("Error executing request", error);
         });
     };
 
+    // Executes request to get google sheet responses data for full stack test using spreadsheet id and name
     const executeRequestFullStackTest = () => {
       if (isSignedIn) return; // Don't execute if user is not signed in
       window.gapi.client.sheets.spreadsheets.values
@@ -193,7 +218,9 @@ const AdminLogin = () => {
         })
         .then((response) => {
           const values = response.result.values || [];
+          // headers variable refers to row that consists of column names of respones
           const headers = values[0];
+          // jsonData refers to array of data responses from the google spreadsheet
           const jsonData = values.slice(1).map((row) => {
             const item = {};
             row.forEach((value, index) => {
@@ -201,13 +228,16 @@ const AdminLogin = () => {
             });
             return item;
           });
+          // storing full stack test responses data in setFullStackData function
           setFullStackData(jsonData);
         })
+        // throws error if any error occurs while executing request to get data
         .catch((error) => {
           console.error("Error executing request", error);
         });
     };
 
+    // Executes request to get google sheet responses data for mern developer intermediate test using spreadsheet id and name
     const executeRequestMernDeveloperIntermediateTest = () => {
       if (isSignedIn) return; // Don't execute if user is not signed in
       window.gapi.client.sheets.spreadsheets.values
@@ -219,7 +249,9 @@ const AdminLogin = () => {
         })
         .then((response) => {
           const values = response.result.values || [];
+          // headers variable refers to row that consists of column names of respones
           const headers = values[0];
+          // jsonData refers to array of data responses from the google spreadsheet
           const jsonData = values.slice(1).map((row) => {
             const item = {};
             row.forEach((value, index) => {
@@ -227,12 +259,16 @@ const AdminLogin = () => {
             });
             return item;
           });
+          // storing mern developer intermediate test responses data in setMernDeveloperIntermediateData function
           setMernDeveloperIntermediateData(jsonData);
         })
+        // throws error if any error occurs while executing request to get data
         .catch((error) => {
           console.error("Error executing request", error);
         });
     };
+
+    // Executes request to get google sheet responses data for java test using spreadsheet id and name
     const executeRequestJavaTest = () => {
       if (isSignedIn) return; // Don't execute if user is not signed in
       window.gapi.client.sheets.spreadsheets.values
@@ -242,7 +278,9 @@ const AdminLogin = () => {
         })
         .then((response) => {
           const values = response.result.values || [];
+          // headers variable refers to row that consists of column names of respones
           const headers = values[0];
+          // jsonData refers to array of data responses from the google spreadsheet
           const jsonData = values.slice(1).map((row) => {
             const item = {};
             row.forEach((value, index) => {
@@ -250,13 +288,16 @@ const AdminLogin = () => {
             });
             return item;
           });
+          // storing java test responses data in setJavaData function
           setJavaData(jsonData);
         })
+        // throws error if any error occurs while executing request to get data
         .catch((error) => {
           console.error("Error executing request", error);
         });
     };
 
+    // Executes request to get google sheet responses data for mern developer junior test using spreadsheet id and name
     const executeRequestMernDeveloperJuniorTest = () => {
       if (isSignedIn) return; // Don't execute if user is not signed in
       window.gapi.client.sheets.spreadsheets.values
@@ -267,7 +308,9 @@ const AdminLogin = () => {
         })
         .then((response) => {
           const values = response.result.values || [];
+          // headers variable refers to row that consists of column names of respones
           const headers = values[0];
+          // jsonData refers to array of data responses from the google spreadsheet
           const jsonData = values.slice(1).map((row) => {
             const item = {};
             row.forEach((value, index) => {
@@ -275,13 +318,16 @@ const AdminLogin = () => {
             });
             return item;
           });
+          // storing mern developer junior test responses data in setMernDeveloperJuniorData function
           setMernDeveloperJuniorData(jsonData);
         })
+        // throws error if any error occurs while executing request to get data
         .catch((error) => {
           console.error("Error executing request", error);
         });
     };
 
+    // Executes request to get google sheet responses data for qa test using spreadsheet id and name
     const executeRequestQATest = () => {
       if (isSignedIn) return; // Don't execute if user is not signed in
       window.gapi.client.sheets.spreadsheets.values
@@ -291,7 +337,9 @@ const AdminLogin = () => {
         })
         .then((response) => {
           const values = response.result.values || [];
+          // headers variable refers to row that consists of column names of respones
           const headers = values[0];
+          // jsonData refers to array of data responses from the google spreadsheet
           const jsonData = values.slice(1).map((row) => {
             const item = {};
             row.forEach((value, index) => {
@@ -299,13 +347,16 @@ const AdminLogin = () => {
             });
             return item;
           });
+          // storing qa test responses data in setQAData function
           setQAData(jsonData);
         })
+        // throws error if any error occurs while executing request to get data
         .catch((error) => {
           console.error("Error executing request", error);
         });
     };
 
+    // Executes request to get google sheet responses data for freshers junior test using spreadsheet id and name
     const executeRequestFreshersJuniorTest = () => {
       if (isSignedIn) return; // Don't execute if user is not signed in
       window.gapi.client.sheets.spreadsheets.values
@@ -315,7 +366,9 @@ const AdminLogin = () => {
         })
         .then((response) => {
           const values = response.result.values || [];
+          // headers variable refers to row that consists of column names of respones
           const headers = values[0];
+          // jsonData refers to array of data responses from the google spreadsheet
           const jsonData = values.slice(1).map((row) => {
             const item = {};
             row.forEach((value, index) => {
@@ -323,25 +376,33 @@ const AdminLogin = () => {
             });
             return item;
           });
+          // storing freshers junior test responses data in setFreshersJuniorData function
           setFreshersJuniorData(jsonData);
         })
+        // throws error if any error occurs while executing request to get data
         .catch((error) => {
           console.error("Error executing request", error);
         });
     };
 
+    // getUserEmail function
     const getUserEmail = () => {
+      // authInstance varaiable to get authorization instance of admin
       const authInstance = window.gapi.auth2.getAuthInstance();
       if (authInstance.isSignedIn.get()) {
         const currentUser = authInstance.currentUser.get();
         const basicProfile = currentUser.getBasicProfile();
         const email = basicProfile.getEmail();
+        // if email from the auth instance equals to the provided email then a unique loginid token will be created
         if (email === "klocprojectone@gmail.com") {
           const loginId = uuidv4();
+          // Cookies.set method is used to set cookies for the login id token and expiration validity of 30 days
           Cookies.set("token", loginId, { expires: 30 });
+          // if email does not exists, notFound component will render
         } else {
           navigate("/notFound");
         }
+        // userEmail value is set to the email
         setUserEmail(email);
       }
     };
@@ -720,6 +781,7 @@ const AdminLogin = () => {
   allData.push(qaData);
   allData.push(freshersJuniorData);
 
+  // handleSignIn function to handle different errors during sign in
   const handleSignIn = () => {
     const authInstance = window.gapi.auth2.getAuthInstance();
     authInstance.signIn().catch((error) => {
@@ -732,6 +794,7 @@ const AdminLogin = () => {
     });
   };
 
+  // handleSignOut function used to signout of admin google account
   const handleSignOut = () => {
     Cookies.remove("token");
     const authInstance = window.gapi.auth2.getAuthInstance();

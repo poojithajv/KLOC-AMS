@@ -243,6 +243,7 @@ function StudentReports() {
             "No Data Found"
           )}
         </div>
+        {/* mobile table container with all tests data responses cards */}
         <div className='mobile-table-container'>
           {filteredData.length > 0
             ? filteredData.map((item, index) => (

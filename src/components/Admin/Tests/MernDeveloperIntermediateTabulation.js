@@ -1,53 +1,58 @@
-import { useState,useEffect} from "react"
-import {useNavigate} from 'react-router-dom'
-import {useLocation} from 'react-router-dom'
-import '../Tabulation.css'
+// import react, react-router-dom packages and index.css file to render MernDeveloperIntermediateTabulation component
+import { useState} from "react"
+import {useNavigate,useLocation} from 'react-router-dom'
 import './table.css'
 
 function MernDeveloperIntermediateTest() {
-    const location=useLocation()
-    const [data,setData]=useState(location.state)
-      const navigate=useNavigate()
+  // location varaiable to get location of the testReports route and state
+  const location=useLocation()
+  // useState of data to store Mern Developer Intermediate test data responses
+  const [data,setData]=useState(location.state)
+  // navigate variable used to naviagating to different routes
+  const navigate=useNavigate()
       
-    return (
-        <div className="test-reports-container">
-            <h1 style={{textAlign:'center'}}>MERN Developer Intermediate Test Tabulation Data</h1>
-            <div className="test-table">
-            {data.length> 0 ? <table border="2px" style={{margin:'auto'}}>
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Completed On</th>
-                        <th>Name</th>
-                        <th>Email Address</th>
-                        <th>Phone Number</th>
-                        <th>Total Score</th>
-                        <th>Aptitude Score</th>
-                        <th>Technical Score</th> 
-                        <th>View Score</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {data.map((item,index) =><tr>
-                        <td>{index}</td>
-                        <td>{item.Timestamp}</td>
-                        <td>{item.Name}</td>
-                        <td>{item.Email_Address}</td>
-                        <td>{item.Phone_Number}</td>
-                        <td>{item.Score}</td>
-                        <td>{item.aptitude_score}</td>
-                        <td>{item.technical_score}</td>
-                        <td>
-                            <button onClick={()=>navigate('/studentChart',{state:item})
-                            } style={{padding:'3px',width:'60px'}}>
-                                View
-                            </button>
-                        </td>
-                    </tr>)}
-                </tbody>
-            </table> :"No Data Found"}
-            </div>
-            <div className='mobile-table-container'>
+  return (
+    <div className="test-reports-container">
+      <h1 style={{textAlign:'center'}}>MERN Developer Intermediate Test Tabulation Data</h1>
+      {/* desktop table container with table of MERN Developer Intermediate test data respones */}
+      <div className="test-table">
+        {data.length> 0 ? <table border="2px" style={{margin:'auto'}}>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Completed On</th>
+                    <th>Name</th>
+                    <th>Email Address</th>
+                    <th>Phone Number</th>
+                    <th>Total Score</th>
+                    <th>Aptitude Score</th>
+                    <th>Technical Score</th> 
+                    <th>View Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                {data.map((item,index) =><tr>
+                    <td>{index}</td>
+                    <td>{item.Timestamp}</td>
+                    <td>{item.Name}</td>
+                    <td>{item.Email_Address}</td>
+                    <td>{item.Phone_Number}</td>
+                    <td>{item.Score}</td>
+                    <td>{item.aptitude_score}</td>
+                    <td>{item.technical_score}</td>
+                    <td>
+                      {/* clicking view button it'll navigates to studentChart route */}
+                        <button onClick={()=>navigate('/studentChart',{state:item})
+                        } style={{padding:'3px',width:'60px'}}>
+                            View
+                        </button>
+                    </td>
+                </tr>)}
+            </tbody>
+          </table> :"No Data Found"}
+      </div>
+      {/* mobile table container with table of MERN Developer Intermediate test data responses */}
+      <div className='mobile-table-container'>
         {data.length >0  ? (
           data.map((item,index)=>
             <div className='table-data-container'>
@@ -91,15 +96,15 @@ function MernDeveloperIntermediateTest() {
               <p>Test Type</p>
               <p className='td'>{item.testType}</p>
             </div>
+            {/* clicking view button it'll navigates to studentChart route */}
             <div className='view-button'>
               <button className='btn' onClick={()=>navigate('/studentChart',{state:item})}>View Score</button>
             </div>
-          </div>
-          
+          </div> 
         ) ) : 'No Data Found'}
-        </div>
-        </div>
-    )
+      </div>
+    </div>
+  )
 }
 
 export default MernDeveloperIntermediateTest

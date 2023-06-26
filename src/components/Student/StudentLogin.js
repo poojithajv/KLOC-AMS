@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { Navigate, createPath, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-import Link from "@mui/material/Link";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
@@ -12,12 +11,16 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
+// for getting random background images
 const defaultTheme = createTheme();
+
 export default function StudentLogin() {
   const [email, setEmail] = useState("");
   const [testKey, setTestKey] = useState("");
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
+  // details about test names and paths
   const testDetails = [
     { testName: "Freshers Junior Test", path: "/fresher-junior-test" },
     { testName: "Fresher Test", path: "/fresher-test" },
@@ -40,48 +43,70 @@ export default function StudentLogin() {
     },
   ];
 
-  const navigate = useNavigate();
+  // trigger after submit button clicked
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(email, testKey);
-    const key = "AIzaSyAz1z7QqYvovxmnO-lvzoORcMC1UZzXNRE";
-    fetch(
-      `https://script.google.com/macros/s/AKfycbwMZQgowv_cRQcdYTCzxZ2bFuoJ1BO736bY4mBTxwYxCYfljouz6oeBWKiCQ6Q3KQ_9nw/exec?key=${key}`
-    )
-      .then((response) => response.json())
-      .then((result) => {
-        console.log(result.data);
-        const filteredData = result.data.find(
-          (item) => item.uniqueId === testKey
-        );
-        console.log(filteredData, "fg");
-        console.log(filteredData.isCompleted);
-        if (filteredData === undefined) {
-          setMessage("You don't have access to write this test");
-        } else if (filteredData.isCompleted === "incomplete") {
-          if (filteredData.uniqueId === testKey) {
-            setMessage("You can write the Test");
-            const testName = filteredData.test;
-            console.log(filteredData, "test");
-            const apiKey = "AIzaSyAz1z7QqYvovxmnO-lvzoORcMC1UZzXNRE";
-            const path = testDetails.find(
-              (test) => test.testName === testName
-            )?.path;
-            navigate(path);
-            fetch(
-              `https://script.google.com/macros/s/AKfycbyZ1M9Wiq5XVZwik3Pe-HvaLaklv_USkK15l5GLzMjtHXDND9cXzbmNraolbnGlUIS9Ig/exec?key=${apiKey}&uniqueId=${testKey}`
-            )
-              .then((response) => console.log(response))
-              .catch((err) => console.log(err));
-          } else {
-            setMessage("Your email end password mismatch");
-          }
-        } else if (filteredData.isCompleted === "test expired") {
-          setMessage("Your Test is expired");
-        } else {
-          setMessage("You already completed the test");
-        }
-      });
+    const key = "AIzaSyAz1z7QqYvovxmnO-lvzoORcMC1UZzXNRE"; // this key was used in apps script for authentication (don't change this key)
+
+    // checks if email or password are empty
+    if (email === "" || testKey === "") {
+      setMessage("Fill the Required fields");
+    } else {
+      // fetches all the data from
+      try {
+        fetch(
+          `https://script.google.com/macros/s/AKfycbwMZQgowv_cRQcdYTCzxZ2bFuoJ1BO736bY4mBTxwYxCYfljouz6oeBWKiCQ6Q3KQ_9nw/exec?key=${key}`
+        )
+          .then((response) => response.json())
+          .then((result) => {
+            console.log(result.data);
+            // filter the student based on test key
+            const filteredData = result.data.find(
+              (item) => item.uniqueId === testKey
+            );
+
+            if (filteredData === undefined) {
+              setMessage("You don't have access to write this test");
+            } else if (filteredData.isCompleted === "incomplete") {
+              // if entered id and email and stored id and email was matched then allows to the test
+              if (
+                filteredData.uniqueId === testKey ||
+                filteredData.email === email
+              ) {
+                setMessage("You can write the Test");
+                const testName = filteredData.test;
+                console.log(filteredData, "test");
+                const apiKey = "AIzaSyAz1z7QqYvovxmnO-lvzoORcMC1UZzXNRE"; // this key was used in apps script for authentication (don't change this key)
+
+                // it will get the correct path based on email and password entered
+                const path = testDetails.find(
+                  (test) => test.testName === testName
+                )?.path;
+                // navigate to to test path
+                navigate(path);
+
+                // it will update the sheet as test completed
+                fetch(
+                  `https://script.google.com/macros/s/AKfycbyZ1M9Wiq5XVZwik3Pe-HvaLaklv_USkK15l5GLzMjtHXDND9cXzbmNraolbnGlUIS9Ig/exec?key=${apiKey}&uniqueId=${testKey}`
+                )
+                  .then((response) => console.log(response))
+                  .catch((err) => console.log(err));
+              } else {
+                setMessage("Your email end password mismatch");
+              }
+            } else if (filteredData.isCompleted === "test expired") {
+              setMessage("Your Test is expired");
+            } else if (filteredData.email !== email) {
+              setMessage("You entered wrong pin or email");
+            } else {
+              setMessage("You already completed the test");
+            }
+          });
+      } catch (err) {
+        setMessage("Something went wrong");
+      }
+    }
   };
   return (
     <div>
@@ -93,6 +118,7 @@ export default function StudentLogin() {
             xs={false}
             sm={4}
             md={7}
+            // it will fetch random background image
             sx={{
               backgroundImage:
                 "url(https://source.unsplash.com/random?wallpapers)",
@@ -166,7 +192,8 @@ export default function StudentLogin() {
                 >
                   Start Test
                 </Button>
-                <p>{message}</p>
+                {/* displays the error msg */}
+                <p className='text-danger'>* {message}</p>
               </Box>
             </Box>
           </Grid>

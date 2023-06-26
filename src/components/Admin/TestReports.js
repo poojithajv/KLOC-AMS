@@ -1,8 +1,10 @@
 // import all required packages like react, react-icons, reactjs-popup, @mui/material, react-router-dom, js-cookie to render the TestReports component
 import React, { useEffect,useState } from "react";
 import {GiHamburgerMenu} from "react-icons/gi"
+import gapi from 'gapi-script'
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
+import Navbar from "./Navbar";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";

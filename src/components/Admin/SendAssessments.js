@@ -5,6 +5,10 @@ import uniqueRandom from "unique-random";
 import gapi from 'gapi-script'
 import emailjs from "@emailjs/browser";
 import "./index.css";
+<<<<<<< HEAD
+// import Navbar from "./Navbar";
+=======
+>>>>>>> 79bbc5a50fb671a4e98e2bc75892384dc1c1cc62
 import Cookies from "js-cookie";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";

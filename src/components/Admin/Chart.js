@@ -123,7 +123,7 @@ function Chart() {
     }
     
   return (
-    <div  className="chart-container" >
+    <div className="chart-container" >
       <div ref={detailsPdf} className="charts">
         <div className='details'>
         <h1 style={{fontSize:'25px',fontWeight:'bold'}}>Student Details:</h1>
@@ -133,8 +133,8 @@ function Chart() {
         <p>{data.aptitude_score!==undefined ? `Aptitude Score : ${data.aptitude_score}` : `Java Score : ${data.fullstack_java_score}`}</p>
         <p>{data.technical_score!==undefined ? `Technical Score :  ${data.technical_score}` : (data.reasoning_score!==undefined ? `Reasoning Score : ${data.reasoning_score}` : `React Score : ${data.fullstack_react_score}`) }</p>
         </div>
-      <div className='piechart'>
-        <PieChart width={730} height={300}>
+      <div >
+        <PieChart width={730} height={300} className='piechart'>
           <Pie
             data={pieData}
             color="#000000"
@@ -158,10 +158,10 @@ function Chart() {
         </div>
       </div>
       <div style={{marginTop:'40px',display:'flex',flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
-      <button type='button' style={{backgroundColor:'orange',color:'white',padding:'10px',border:'none',fontSize:'15px',marginRight:'20px'}} onClick={generatePdf} >
+      <button type='button' style={{backgroundColor:'cyan',color:'white',padding:'10px',border:'none',fontSize:'15px',marginRight:'20px'}} onClick={generatePdf} >
         Download
       </button>
-      <button style={{backgroundColor:'blue',color:'white',padding:'10px',border:'none',fontSize:'15px',marginRight:'20px'}} onClick={()=> sendMail(data)} className='send'>Send Email</button>
+      <button style={{backgroundColor:'darkgrey',color:'white',padding:'10px',border:'none',fontSize:'15px',marginRight:'20px'}} onClick={()=> sendMail(data)} className='send'>Send Email</button>
       </div>
         <Modal 
         show={isOpen} 
@@ -176,7 +176,7 @@ function Chart() {
               <Form.Control type="text" value={data.Email_Address}/>           
           </Form.Group>
           <Form.Group >
-              <Form.Label>Other Mail ID's: </Form.Label>
+              <Form.Label>CC Mail ID's: </Form.Label>
               <Form.Control type="text" value={mailId} onChange={(e)=>setMailId(e.target.value)}/>           
           </Form.Group>
       </Modal.Body>

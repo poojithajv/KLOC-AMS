@@ -4,7 +4,7 @@ import {GiHamburgerMenu} from "react-icons/gi"
 import gapi from 'gapi-script'
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
-import Navbar from "./Navbar";
+// import Navbar from "./Navbar";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";

@@ -5,7 +5,7 @@ import EachCandidateInputField from "./EachCandidateInputField";
 import uniqueRandom from "unique-random";
 import emailjs from "@emailjs/browser";
 import "./index.css";
-import Navbar from "./Navbar";
+// import Navbar from "./Navbar";
 import Cookies from "js-cookie";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";

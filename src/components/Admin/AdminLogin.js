@@ -1,16 +1,7 @@
 import React, { useEffect, useState } from "react";
-<<<<<<< HEAD
-import {GiHamburgerMenu} from "react-icons/gi"
-import Popup from 'reactjs-popup';
-import 'reactjs-popup/dist/index.css';
-// import Navbar from './Navbar'
-import AdbIcon from "@mui/icons-material/Adb";
-import TestContext from "../../TestContext";
-=======
 import { GiHamburgerMenu } from "react-icons/gi";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
->>>>>>> 79bbc5a50fb671a4e98e2bc75892384dc1c1cc62
 import Cookies from "js-cookie";
 import { v4 as uuidv4 } from "uuid";
 import { useNavigate } from "react-router-dom";

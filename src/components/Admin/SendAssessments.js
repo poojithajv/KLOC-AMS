@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import EachCandidateInputField from "./EachCandidateInputField";
 import uniqueRandom from "unique-random";
+import gapi from 'gapi-script'
 import emailjs from "@emailjs/browser";
 import "./index.css";
 import Cookies from "js-cookie";

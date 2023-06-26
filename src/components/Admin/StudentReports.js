@@ -2,6 +2,7 @@
 import React,{useState,useEffect} from 'react'
 import {GiHamburgerMenu} from "react-icons/gi"
 import Popup from 'reactjs-popup';
+import gapi from 'gapi-script'
 import 'reactjs-popup/dist/index.css';
 import Cookies from 'js-cookie'
 import { useNavigate,useLocation } from 'react-router-dom'

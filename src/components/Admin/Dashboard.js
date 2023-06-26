@@ -1,6 +1,7 @@
 import React, { useEffect,useState } from "react";
 import { useNavigate ,useLocation} from "react-router-dom";
 import { Chart } from "react-google-charts";
+import gapi from 'gapi-script'
 import Cookies from "js-cookie";
 import {GiHamburgerMenu} from "react-icons/gi"
 import Popup from 'reactjs-popup';

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import {GiHamburgerMenu} from "react-icons/gi"
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
-import Navbar from './Navbar'
+// import Navbar from './Navbar'
 import AdbIcon from "@mui/icons-material/Adb";
 import TestContext from "../../TestContext";
 import Cookies from "js-cookie";

@@ -1,5 +1,6 @@
+// this component about  metrics for every test
 import React, { useEffect,useState } from "react";
-import Navbar from "./Navbar";
+// import Navbar from "./Navbar";
 // import { PieChart, Pie, Cell, Tooltip, Legend } from "recharts"
 import { useNavigate ,useLocation} from "react-router-dom";
 import { Chart } from "react-google-charts";
@@ -15,46 +16,24 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const [finalData,setFinalData]=useState(location.state)
   
-  // const [isOpen, setIsOpen] = useState(false)
-  // const clickHamburger = () => {
-  //   setIsOpen(!isOpen)
-  // }
-
-  // const handleClose = () => {
-  //   setIsOpen(!isOpen)
-  // }
+  
 
   const data=finalData.datat
-  // const TotalDataLength=data.freshersJuniorData.length+data.fresherData.length+data.pythonData.length+
-  // data.mernDeveloperIntermediateData.length+data.shopifyData.length+data.frontEndFresherData.length+
-  // data.fullStackData.length+data.javaData.length+data.mernDeveloperJuniorData.length+data.qaData.length
-  const fresher=data.fresherData.length
+  // these variables includes number of tests taken by candidate for every stream 
+  const fresher=data.fresherData.length // this is number of freser test taken
   console.log(fresher)
-  const freshersJunior=data.freshersJuniorData.length
+  const freshersJunior=data.freshersJuniorData.length //  number of fresersJunior tests taken
   console.log(freshersJunior)
-  const python=data.pythonData.length
-  const frontendfresher=data.frontEndFresherData.length
-  const qa=data.qaData.length
-  const merndeveloperintermediate=data.mernDeveloperIntermediateData.length
-  const merndeveloperjunior=data.mernDeveloperJuniorData.length
-  const shopify=data.shopifyData.length
-  const fullStack=data.fullStackData.length
-  const java=data.javaData.length
-  // const Colors = ["#b272f7","#f255f0","#6bd3ed","#7af0a1","#ed8d39","#b0f222","#f75475","#ed55ed","#d383f7","#67a697" ]
-  // const pieData=[
-  //     ["Language", "Speakers (in millions)"],
-  //     ["FreshersJuniorTest",1]
-  //     ["FreshersTest",2],
-  //     // ['Python Test',Math.round(data.pythonData.length/TotalDataLength*100*100)/100],
-  //     // ['Shopify Test',Math.round(data.shopifyData.length/TotalDataLength*100*100)/100],
-  //     // ['Full Stack Test',Math.round(data.fullStackData.length/TotalDataLength*100*100)/100],
-  //     // ['Front End Fresher Test',Math.round(data.frontEndFresherData.length/TotalDataLength*100*100)/100]
-  //     // ['Java Test',Math.round(data.javaData.length/TotalDataLength*100*100)/100],
-  //     // ['MERN Developer Junior Test',Math.round(data.mernDeveloperJuniorData.length/TotalDataLength*100*100)/100],
-  //     // ['MERN Developer Intermediate Test',Math.round(data.mernDeveloperIntermediateData.length/TotalDataLength*100*100)/100],
-  //     // ['QA Test',Math.round(data.qaData.length/TotalDataLength*100*100)/100]
-  // ]
+  const python=data.pythonData.length  // number of Python tests taken
+  const frontendfresher=data.frontEndFresherData.length // number of froentFreher tests taken
+  const qa=data.qaData.length  //  number of QA tests taken
+  const merndeveloperintermediate=data.mernDeveloperIntermediateData.length //  number of merndeveloperintermediate tests taken
+  const merndeveloperjunior=data.mernDeveloperJuniorData.length ////  number of merndeveloperjunior taken
+  const shopify=data.shopifyData.length //  number of shopify tests taken
+  const fullStack=data.fullStackData.length //  number of Fullstack tests taken
+  const java=data.javaData.length //  number of Java tests taken
 
+  // this pieData for designing the piechart of all tests taken by candidate(java,fullstack,qa,shopify,fresher,froentendFresher,fresherjunior,mernintermediate,mernJunior test,python)
   const pieData=[
     ["Language", "Speakers (in millions)"],
     ['Fresher_Junior_Test',freshersJunior],
@@ -68,11 +47,13 @@ const Dashboard = () => {
     ['Mern_Developer_Junior_Test',merndeveloperjunior],
     ['Shopify_Test',shopify]
   ]
-      let freshers_aptitude_score  = 0 
-      let freshers_technical_score = 0 
-      let freshers_aptitude_percentage=0
-      let freshers_technical_percentage=0
 
+      let freshers_aptitude_score  = 0 //  this variable stores the data ,aptitudescore who took freshertest
+      let freshers_technical_score = 0  //his variable stores the data ,technical score who took freshertest
+      let freshers_aptitude_percentage=0  //this variable stores the data , percentage of apitude score who took freshertest
+      let freshers_technical_percentage=0 //this variable stores the data , percentage of technical score who took freshertest
+
+    // this calculation for correct reponses by the candidate in fresher test
     data.fresherData.map((item,index)=>{
      freshers_aptitude_score+=item.aptitude_score
      freshers_technical_score+=item.technical_score
@@ -83,11 +64,13 @@ const Dashboard = () => {
    freshers_aptitude_percentage=freshers_aptitude_score/data.fresherData.length/ process.env.REACT_APP_FRESHER_TEST_APTITUDE_QUESTIONS*100
    freshers_technical_percentage=freshers_technical_score/(data.fresherData.length*process.env.REACT_APP_FRESHER_TEST_TECHNICAL_QUESTIONS)*100
   
-   let python_aptitude_score=0
-   let python_technical_score=0
-   let python_aptitude_percentage=0
-   let python_technical_percentage=0
-    data.pythonData.map((item,index)=>{
+   let python_aptitude_score=0        // this variable stores the data ,aptitudescore who took Pythontest
+   let python_technical_score=0       // this variable stores the data ,Technicalscore who took freshertest
+   let python_aptitude_percentage=0   //this variable stores the data , percentage of apitude score who took Pythontest
+   let python_technical_percentage=0   //this variable stores the data , percentage of Technical score who took Pythontest
+       
+   // this calculation for correct reponses by the candidate in Python test
+   data.pythonData.map((item,index)=>{
         python_aptitude_score+=item.aptitude_score
         python_technical_score+=item.technical_score
     })
@@ -95,10 +78,11 @@ const Dashboard = () => {
     python_technical_percentage=python_technical_score/data.pythonData.length/process.env.REACT_APP_PYTHON_TEST_TECHNICAL_QUESTIONS*100
 
     
-    let shopify_aptitude_score=0
-    let shopify_technical_score=0
-    let shopify_aptitude_percentage=0
-    let shopify_technical_percentage=0
+    let shopify_aptitude_score=0     // this variable stores the data ,aptitudescore who took Shopifytest
+    let shopify_technical_score=0    // this variable stores the data ,Technicalscore who took Shopifytest
+    let shopify_aptitude_percentage=0 //this variable stores the data , percentage of apitude score who took Shopifytest
+    let shopify_technical_percentage=0  //this variable stores the data , percentage of Technicalscore who took Pythontest
+     // this calculation for correct reponses by the candidate in Python test
     data.shopifyData.map((item,index)=>{
       shopify_aptitude_score+=item.aptitude_score
       shopify_technical_score+=item.technical_score
@@ -107,10 +91,12 @@ const Dashboard = () => {
     shopify_aptitude_percentage=shopify_aptitude_score/data.shopifyData.length/process.env.REACT_APP_SHOPIFY_TEST_APTITUDE_QUESTIONS*100
     shopify_technical_percentage=shopify_technical_score/data.shopifyData.length/process.env.REACT_APP_SHOPIFY_TEST_TECHNICAL_QUESTIONS*100
 
-    let fullStack_java_score=0
-    let fullStack_react_score=0
-    let fullStack_java_percentage=0
-    let fullStack_react_percentage=0
+    let fullStack_java_score=0          // this variable stores the data ,javascore who took Fullstacktest
+    let fullStack_react_score=0        // this variable stores the data ,Reactscore who took Fullstacktest
+    let fullStack_java_percentage=0    //this variable stores the data , percentage of java score who took Fullstacktest
+    let fullStack_react_percentage=0   //this variable stores the data , percentage of  React score who took Fullstacktest
+   
+    // this calculation for correct reponses by the candidate in FullStack test
     data.fullStackData.map((item,index)=>{
       fullStack_java_score+=item.fullstack_java_score
       fullStack_react_score+=item.fullstack_react_score
@@ -119,10 +105,14 @@ const Dashboard = () => {
     fullStack_java_percentage=fullStack_java_score/data.fullStackData.length/process.env.REACT_APP_FULL_STACK_TEST_JAVA_QUESTIONS*100
     fullStack_react_percentage=fullStack_react_score/data.fullStackData.length/process.env.REACT_APP_FULL_STACK_TEST_REACT_QUESTIONS*100
   
-    let java_aptitude_score=0
-    let java_technical_score=0
-    let java_aptitude_percentage=0
-    let java_technical_percentage=0
+    let java_aptitude_score=0  // this variable stores the data ,aptitudescore who took Javatest
+
+    let java_technical_score=0   // this variable stores the data ,Technicalscore who took Javatest
+
+    let java_aptitude_percentage=0 //this variable stores the data , percentage of apitude score who took javatest
+
+    let java_technical_percentage=0 //this variable stores the data , percentage of Technicalscore who took Javatest
+    
     data.javaData.map((item,index)=>{
       java_aptitude_score+=item.aptitude_score
       java_technical_score+=item.technical_score
@@ -131,10 +121,17 @@ const Dashboard = () => {
     java_aptitude_percentage=java_aptitude_score/data.javaData.length/process.env.REACT_APP_JAVA_TEST_APTITUDE_QUESTIONS*100
     java_technical_percentage=java_technical_score/data.javaData.length/process.env.REACT_APP_JAVA_TEST_TECHNICAL_QUESTIONS*100
     
-    let Qa_aptitude_score=0
+
+ // this variable stores the data ,aptitudescore who took QAtest
+let Qa_aptitude_score=0  
+// this variable stores the data ,Technicalscore who took QAtest
     let Qa_technical_score=0
+    //this variable stores the data , percentage of apitude score who took QAtest
     let Qa_aptitude_percentage=0
+//this variable stores the data , percentage of Technicalscore who took QAtest
     let Qa_technical_percentage=0
+
+    // this calculation for correct reponses by the candidate in QA test
     data.qaData.map((item,index)=>{
       Qa_aptitude_score+=item.aptitude_score
       Qa_technical_score+=item.technical_score
@@ -142,10 +139,12 @@ const Dashboard = () => {
     Qa_aptitude_percentage=Qa_aptitude_score/data.qaData.length/process.env.REACT_APP_QA_TEST_APTITUDE_QUESTIONS*100
     Qa_technical_percentage=Qa_technical_score/data.qaData.length/process.env.REACT_APP_QA_TEST_TECHNICAL_QUESTIONS*100
 
-    let frontendfresher_aptitude_score=0
-    let frontendfresher_technical_score=0
-    let frontendfresher_aptitude_percentage=0
-    let frontendfresher_technical_percentage=0
+    let frontendfresher_aptitude_score=0  // this variable stores the data ,aptitudescore who took Froentendfreshertest
+    let frontendfresher_technical_score=0  // this variable stores the data ,Technicalscore who took Froentendfreshertest
+    let frontendfresher_aptitude_percentage=0 //this variable stores the data , percentage of apitude score who took  Froentendfreshertest
+    let frontendfresher_technical_percentage=0  //this variable stores the data , percentage of Technicalscore who took Froentendfreshertest
+    
+    // this calculation for correct reponses by the candidate in Froentendfresher test
     data.frontEndFresherData.map((item,index)=>{
       frontendfresher_aptitude_score+=item.aptitude_score
       frontendfresher_technical_score+=item.technical_score
@@ -154,10 +153,14 @@ const Dashboard = () => {
     frontendfresher_technical_percentage=frontendfresher_technical_score/data.frontEndFresherData.length/process.env.REACT_APP_FRONTEND_FRESHER_TEST_TECHNICAL_QUESTIONS*100
 
 
-    let freshersJunior_aptitude_score=0
-    let freshersJunior_reasoning_score=0
-    let freshersJunior_aptitude_percentage=0
-    let freshersJunior_reasoning_percentage=0
+
+    let freshersJunior_aptitude_score=0  // this variable stores the data ,aptitudescore who took freshersJuniortest
+    let freshersJunior_reasoning_score=0 // this variable stores the data ,reasoning_score who took freshersJuniortest
+    let freshersJunior_aptitude_percentage=0 //this variable stores the data , percentage of apitude score who took freshersJuniortest 
+
+    let freshersJunior_reasoning_percentage=0 //this variable stores the data , percentage of Reasoning who took freshersJuniortest 
+        
+    // this calculation for correct reponses by the candidate in FresherJunior test
     data.freshersJuniorData.map((item,index)=>{
       freshersJunior_aptitude_score+=item.aptitude_score
       freshersJunior_reasoning_score+=item.reasoning_score
@@ -165,10 +168,11 @@ const Dashboard = () => {
     freshersJunior_aptitude_percentage=freshersJunior_aptitude_score/data.freshersJuniorData.length/process.env.REACT_APP_FRESHERS_JUNIOR_TEST_APTITUDE_QUESTIONS*100
     freshersJunior_reasoning_percentage=freshersJunior_reasoning_score/data.freshersJuniorData.length/process.env.REACT_APP_FRESHERS_JUNIOR_TEST_REASONING_QUESTIONS*100
 
-    let merndeveloperintermediate_aptitude_score=0
-    let merndeveloperintermediate_technical_score=0
-    let merndeveloperintermediate_aptitude_percentage=0
-    let merndeveloperintermediate_technical_percentage=0
+    let merndeveloperintermediate_aptitude_score=0 //this variable stores the data ,aptitudescore who took  merndeveloperintermediate
+    let merndeveloperintermediate_technical_score=0 // this variable stores the data ,reasoning_score who took  merndeveloperintermediate
+    let merndeveloperintermediate_aptitude_percentage=0 //this variable stores the data , percentage of apitude score who took  merndeveloperintermediate
+    let merndeveloperintermediate_technical_percentage=0 // this variable stores the data , percentage of Reasoning who took merndeveloperintermediate
+     // this calculation for correct reponses by the candidate in mernDeveloperIntermediate
     data.mernDeveloperIntermediateData.map((item,index)=>{
       merndeveloperintermediate_aptitude_score+=item.aptitude_score
       merndeveloperintermediate_technical_score+=item.technical_score
@@ -176,72 +180,79 @@ const Dashboard = () => {
     merndeveloperintermediate_aptitude_percentage=merndeveloperintermediate_aptitude_score/data.mernDeveloperIntermediateData.length/process.env.REACT_APP_MERN_DEVELOPER_INTERMEDIATE_TEST_APTITUDE_QUESTIONS*100
     merndeveloperintermediate_technical_percentage=merndeveloperintermediate_technical_score/data.mernDeveloperIntermediateData.length/process.env.REACT_APP_MERN_DEVELOPER_INTERMEDIATE_TEST_TECHNICAL_QUESTIONS*100
 
-    let merndeveloperjunior_aptitude_score=0
-    let merndeveloperjunior_technical_score=0
-    let merndeveloperjunior_aptitude_percentage=0
-    let merndeveloperjunior_technical_percentage=0
-    data.mernDeveloperJuniorData.map((item,index)=>{
+    let merndeveloperjunior_aptitude_score=0 //this variable stores the data ,aptitudescore who took  merndeveloperjunior
+    let merndeveloperjunior_technical_score=0 // this variable stores the data ,reasoning_score who took  merndeveloperjunior
+    let merndeveloperjunior_aptitude_percentage=0  //this variable stores the data , percentage of apitude score who took merndeveloperjunior
+    let merndeveloperjunior_technical_percentage=0 // this variable stores the data , percentage of Reasoning who took merndeveloperjunior
+    
+  // this calculation for correct reponses by the candidate in mernDeveloperJunior
+data.mernDeveloperJuniorData.map((item,index)=>{
       merndeveloperjunior_aptitude_score+=item.aptitude_score
       merndeveloperjunior_technical_score+=item.technical_score
     })
 
     merndeveloperjunior_aptitude_percentage=merndeveloperjunior_aptitude_score/data.mernDeveloperJuniorData.length/process.env.REACT_APP_MERN_DEVELOPER_JUNIOR_TEST_APTITUDE_QUESTIONS*100
     merndeveloperjunior_technical_percentage=merndeveloperjunior_technical_score/data.mernDeveloperJuniorData.length/process.env.REACT_APP_MERN_DEVELOPER_JUNIOR_TEST_TECHNICAL_QUESTIONS*100
-
+    
+    //this data for designing the piechart of fresherTest
     const fresherPieData=[
     ["Language", "Speakers (in millions)"],
     ['FreshersAptitude',freshers_aptitude_percentage],
     ["FreshersTechnical",freshers_technical_percentage]
   ]
 
+  //this data for designing the piechart of PythonTest
   const pythonPieData=[
     ["Language", "Speakers (in millions)"],
     ['PythonAptitude',python_aptitude_percentage],
     ['PythonTechnical',python_technical_percentage]
   ]
 
+  //this data for designing the piechart of  shopifyTest
   const shopifyPieData=[
     ["Language", "Speakers (in millions)"],
     ['ShopifyAptitude',shopify_aptitude_percentage],
     ['ShopifyTechnical',shopify_technical_percentage]
   ]
-
+    
+  //this data for designing the piechart of fullstackTest
   const fullStackPieData=[
     ["Language", "Speakers (in millions)"],
     ['FullStackJava',fullStack_java_percentage],
     ['FullStackReact',fullStack_react_percentage]
   ]
-
+  //this data for designing the piechart of  javaTest
   const javaPieData=[
     ["Language", "Speakers (in millions)"],
     ['JavaAptitude',java_aptitude_percentage],
     ['JavaTechnical',java_technical_percentage]
   ]
-
+    
+  //this data for designing the piechart of  QaTest
   const qaPieData=[
     ["Language", "Speakers (in millions)"],
     ['QAAptitude',Qa_aptitude_percentage],
     ['QATechnical',Qa_technical_percentage]
   ]
-
+  //this data for designing the piechart of  frontendfresherTest
   const frontendfresherPieData=[
     ["Language", "Speakers (in millions)"],
     ['FrontEndFresherAptitude',frontendfresher_aptitude_percentage],
     ['FrontEndFresherTechnical',frontendfresher_technical_percentage]
   ]
-
+  //this data for designing the piechart of   freshersJuniorTest
   const freshersJuniorPieData=[
     ["Language", "Speakers (in millions)"],
     ['FreshersJuniorAptitude',freshersJunior_aptitude_percentage],
     ['FreshersJuniorReasoning',freshersJunior_reasoning_percentage]
   ]
-
+  //this data for designing the piechart of  merndeveloperintermediateTest
   const merndeveloperintermediatePieData=[
     ["Language", "Speakers (in millions)"],
     ['MERNDeveloperIntermediateAptitude',merndeveloperintermediate_aptitude_percentage],
     ['MERNDeveloperIntermediateTechnical',merndeveloperintermediate_technical_percentage]
   ]
-
+  //this data for designing the piechart of   merndeveloperJuniorTest
   const merndeveloperJuniorPieData=[
     ["Language", "Speakers (in millions)"],
     ['MERNDeveloperJuniorAptitude',merndeveloperjunior_aptitude_percentage],

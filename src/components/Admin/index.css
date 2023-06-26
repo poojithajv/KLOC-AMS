@@ -14,7 +14,13 @@
   display: flex;
   justify-content: space-around;
 }
-
+.display-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
 .display-between {
   display: flex;
   justify-content: space-around;
@@ -24,102 +30,29 @@
   justify-content: center;
 }
 
-
-
-.not-found-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.google-signin-button {
+  display: inline-flex;
   align-items: center;
-  min-height: 100vh;
-}
-.not-found-img {
-  height: 300px;
-  width: 300px;
-}
-
-.home-page-btn {
-  font-family: "Roboto";
-  font-weight: 600;
-  font-size: 10px;
-  padding: 8px 16px;
-  color: #ffffff;
-  background-color: #3b82f6;
-  border: none;
+  background-color: #fff;
+  color: #737373;
+  border: 1px solid #737373;
   border-radius: 4px;
-  margin-left: 14px;
+  padding: 8px 16px;
   cursor: pointer;
-  outline: none;
 }
 
-.no-found-heading {
-  font-family: "Roboto";
-  font-weight: bold;
-  font-size: 30px;
-  color: #989898;
+.google-signin-button img {
+  margin-right: 8px;
+  width: 18px;
+  height: 18px;
 }
 
-
-
-.dashboard_chart_container{
+.test-container {
   display: flex;
-  align-items:center;
   flex-wrap: wrap;
-  
+  justify-content: space-between;
+  align-items: center;
 }
-
-@media screen and (max-width:768px) {
-  .dashboard_chart_container{
-    display: flex;
-    flex-wrap: wrap;
-    align-items: start;
-    margin: auto;
-  
-  }
-}
-
-@media screen and (max-width:393px){
-  .dashboard_chart{
-    display: flex;
-    margin-left: 80px;
-    align-items: center;
-  }
-}
-
-@media screen and (max-width:280px){
-  .dashboard_chart{
-    display: flex;
-    margin-left: 80px;
-    align-items: center;
-  }
-}
-
-@media screen and (max-width:412px){
-  .dashboard_chart{
-    display: flex;
-    margin-left: 120px;
-    align-items: center;
-  }
-}
-
-.dashboard_chart{
-  margin-left: 0px;
-  width: "40%";
-  height: "400px";
-}
-
-
-/*Send Assessements Component Styles*/
-
-.send-assessment-main-container{
-  width:100%;
-  height:100%;
-  padding:0px;
-  padding-right:0px;
-  padding-left:0px;
-}
-
-/*Assessement container styles*/
 
 .assessment-container {
   background-color: rgb(231, 230, 230);
@@ -217,13 +150,11 @@ input::-webkit-inner-spin-button {
 
 .dashboard_chart_container{
   display: flex;
+  align-items:start;
   flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
 }
 
-@media screen and (max-width:840px) {
+@media(max-width:"768px") {
   .dashboard_chart_container{
     display: flex;
     align-items: center;
@@ -278,7 +209,77 @@ input::-webkit-inner-spin-button {
   }
 }
 
+/* Admin Header*/
 
+.admin-header-container{
+  padding-left:30px;
+  background-color:#1d1a69;
+  color:white;
+  height:60px;
+  display:flex;
+  flex-direction:row;
+  justify-content:space-between;
+  align-items:center;
+  padding-right:15px;
+  padding-left:15px;
+  border:1px solid black;
+}
+
+.admin-header-log-container{
+  height:100%; 
+    display:flex; 
+    justify-content:center ;
+    align-items:center;
+}
+
+.admin-desktop-header-navbar-container{
+  display:flex;
+    flex-direction:row;
+    align-items:center;
+}
+
+.admin-mobile-header-navbar-container{
+  display:none;
+}
+
+.admin-header-navbar-link{
+  font-size:18px;
+    margin-right:20px;
+    font-weight:bold;
+    margin-top: 8px;
+}
+
+.admin-header-login{
+  margin-right:30px;
+  color:white;
+  font-weight:bold;
+  font-size:18px;
+  margin-top: 8px;
+}
+
+@media (max-width:768px){
+  .admin-desktop-header-navbar-container{
+    display:none;
+  }
+  .admin-mobile-header-navbar-container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:28px;
+  }
+  .admin-hamburger-btn{
+    color:white;
+    border:none;
+    background-color:transparent;
+}
+
+.admin-mobile-hamburger-menu{
+    color:#1d1a69;
+    list-style-type:none;
+    padding: 20px;
+    
+}
+}
 .charts{
   display: flex;
   padding:20px;
@@ -299,144 +300,49 @@ input::-webkit-inner-spin-button {
   margin-left: 0px;
 }
 .chart-container{
-  padding-top: 30px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-padding: 20px;  
+  padding: 20px;
 }
-@media screen and (max-width:800px){
+@media screen and (max-width:1279px){
   .chart-container{
-    padding-top: 50px;
-    margin-top: 150px;
+    padding-left: 170px;
+    height:auto;
   }
+}
+@media screen and (max-width:768px){
   .charts{
     display: flex;
     flex-direction: column;
     width:400px;
     justify-content: center;
     align-items: center;
+    margin: 20px;
   }
   .details{
     text-align: center;
   }
 }
-@media screen and (max-width:300px){
-  .charts{
-    width:200px;
+@media screen and (max-width:767px){
+  .chart-container{
+    margin-left: 100px;
   }
 }
-@media screen and (max-width:460px){
-  .charts{
-    width:300px;
+@media screen and (max-width:600px){
+  .chart-container{
+    margin-left: 160px;
+  }
+}
+@media screen and (max-width:300px){
+  .chart-container{
+    margin-left: 260px;
+    height:100vh;
   }
 }
 @media screen and (max-width:768px){
   .send{
     width:100px;
   }
-}
-.totaltestconductedbutton{
-  border-radius: 3px;
-  background-color: transparent;
-  font-size:20px;
-  font-family:"roboto";
-  margin-left:100px ;
-  border:none;
-  height:50px;
-  padding:5px;
-  margin-top: 20px;
-}
-
-.allstremsPiechart{
-  height: 600px;
-  width: 600px;
-  margin-left: 0px;
-}
-
-@media screen and (max-width:768px) {
-  .allstremsPiechart{
-  height: 400px;
-  width: 400px;
-  }
-  
-}
-@media  (max-width:375px) {
-  .allstremsPiechart{
-  height: 300px;
-  width: 300px;
-  }
-  
-}
-
-
-.testwisePiechart{
-  height: 400px;
-  width: 400px;
-  margin-left: 0px;
-}
-@media screen and (max-width:768px){
-  .testwisePiechart{
-    height: 300px;
-    width:300px;
-    margin-left: 30px;
-  }
-
-}
-@media screen  and (max-width:375px){
-  .testwisePiechart{
-    height: 150px;
-    width: 150px;
-    margin-left: 20px;
-  }
-}
-.allmetricsHeading{
-  color: gray;
-  margin-left: 20px;
-  font-size: 28px;
-  margin-bottom: 20px;
-  text-align: center;
-}
-@media  screen and (max-width:375px) {
-  .allmetricsHeadining{
-    font-size: 16px;
-    margin-left: 10px;
-  }
-}
-
-.teswisemetricsHeading{
-  color: gray;
-  margin-left: 20px;
-  font-size: 28px;
-}
-@media screen and (max-width:375px) {
- .teswisemetricsHeading{
-  margin-left: 10px;
-  font-size: 16x;
- }
-}
-.piechart-details{
-  display:flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-}
-.color{
-  height: 20px;
-  width: 25px;
-  background-color: #e89510;
-  border:0px;
-  margin-right:5px;
-}
-.test{
-  font-size: 20px;
-  margin-bottom: 5px;
-  margin-right: 20px;
-}
-.test-chart{
-  display: flex;
-  justify-content: center;
 }

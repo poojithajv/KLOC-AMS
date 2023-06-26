@@ -1,4 +1,5 @@
 // import all required packages like react, react-icons, reactjs-popup, js-cookie, uuid, react-router-dom and components like index.css to render AdminLogin component
+import gapi from 'gapi-script'
 import React, { useEffect, useState } from "react";
 import {GiHamburgerMenu} from "react-icons/gi"
 import Popup from 'reactjs-popup';

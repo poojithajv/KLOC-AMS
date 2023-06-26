@@ -58,7 +58,7 @@ const EachCandidateInputField = ({ onInputChange }) => {
           placeholder="Date"
           type="date"
           variant="outlined"
-          className="input-field m-1 custome-input-field"
+          className="input-field m-1 custom-input-field"
           value={inputValues.endDate}
           onChange={(e) => handleInputChange("endDate", e.target.value)}
           required

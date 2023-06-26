@@ -1,5 +1,10 @@
 // this component about  metrics for every test
 import React, { useEffect,useState } from "react";
+<<<<<<< HEAD
+// import Navbar from "./Navbar";
+// import { PieChart, Pie, Cell, Tooltip, Legend } from "recharts"
+=======
+>>>>>>> 79bbc5a50fb671a4e98e2bc75892384dc1c1cc62
 import { useNavigate ,useLocation} from "react-router-dom";
 import { Chart } from "react-google-charts";
 import gapi from 'gapi-script'
@@ -13,6 +18,27 @@ const Dashboard = () => {
   const location=useLocation()
   const navigate = useNavigate();
   const [finalData,setFinalData]=useState(location.state)
+<<<<<<< HEAD
+  
+  
+
+  const data=finalData.datat
+  // these variables includes number of tests taken by candidate for every stream 
+  const fresher=data.fresherData.length // this is number of freser test taken
+  console.log(fresher)
+  const freshersJunior=data.freshersJuniorData.length //  number of fresersJunior tests taken
+  console.log(freshersJunior)
+  const python=data.pythonData.length  // number of Python tests taken
+  const frontendfresher=data.frontEndFresherData.length // number of froentFreher tests taken
+  const qa=data.qaData.length  //  number of QA tests taken
+  const merndeveloperintermediate=data.mernDeveloperIntermediateData.length //  number of merndeveloperintermediate tests taken
+  const merndeveloperjunior=data.mernDeveloperJuniorData.length ////  number of merndeveloperjunior taken
+  const shopify=data.shopifyData.length //  number of shopify tests taken
+  const fullStack=data.fullStackData.length //  number of Fullstack tests taken
+  const java=data.javaData.length //  number of Java tests taken
+
+  // this pieData for designing the piechart of all tests taken by candidate(java,fullstack,qa,shopify,fresher,froentendFresher,fresherjunior,mernintermediate,mernJunior test,python)
+=======
   const data=finalData.datat
   const fresher=data.fresherData.length
   const freshersJunior=data.freshersJuniorData.length
@@ -24,6 +50,7 @@ const Dashboard = () => {
   const shopify=data.shopifyData.length
   const fullStack=data.fullStackData.length
   const java=data.javaData.length
+>>>>>>> 79bbc5a50fb671a4e98e2bc75892384dc1c1cc62
   const pieData=[
     ["Language", "Speakers (in millions)"],
     ['Fresher_Junior_Test',freshersJunior],
@@ -37,11 +64,21 @@ const Dashboard = () => {
     ['Mern_Developer_Junior_Test',merndeveloperjunior],
     ['Shopify_Test',shopify]
   ]
+<<<<<<< HEAD
+
+      let freshers_aptitude_score  = 0 //  this variable stores the data ,aptitudescore who took freshertest
+      let freshers_technical_score = 0  //his variable stores the data ,technical score who took freshertest
+      let freshers_aptitude_percentage=0  //this variable stores the data , percentage of apitude score who took freshertest
+      let freshers_technical_percentage=0 //this variable stores the data , percentage of technical score who took freshertest
+
+    // this calculation for correct reponses by the candidate in fresher test
+=======
   
     let freshers_aptitude_score  = 0 
     let freshers_technical_score = 0 
     let freshers_aptitude_percentage=0
     let freshers_technical_percentage=0
+>>>>>>> 79bbc5a50fb671a4e98e2bc75892384dc1c1cc62
     data.fresherData.map((item,index)=>{
      freshers_aptitude_score+=item.aptitude_score
      freshers_technical_score+=item.technical_score

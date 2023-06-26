@@ -147,7 +147,7 @@ function Chart() {
     }
     
   return (
-    <div className="chart-container" >
+    <div  className="chart-container" >
       <div ref={detailsPdf} className="charts">
         <div className='details'>
         <h1 style={{fontSize:'25px',fontWeight:'bold'}}>Student Details:</h1>

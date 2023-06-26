@@ -148,7 +148,6 @@ function Chart() {
     
   return (
     <div className="chart-container" >
-      // 
       <div ref={detailsPdf} className="charts">
         <div className='details'>
         <h1 style={{fontSize:'25px',fontWeight:'bold'}}>Student Details:</h1>
@@ -188,7 +187,6 @@ function Chart() {
       </button>
       <button style={{backgroundColor:'darkgrey',color:'white',padding:'10px',border:'none',fontSize:'15px',marginRight:'20px'}} onClick={()=> sendMail(data)} className='send'>Send Email</button>
       </div>
-      // this is react-bootstrap modal for including cc
         <Modal 
         show={isOpen} 
         onRequestClose={handleClose}

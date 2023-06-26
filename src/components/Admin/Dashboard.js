@@ -255,61 +255,61 @@ data.mernDeveloperJuniorData.map((item,index)=>{
 
   const fresheroptions = {
     legend:"none",
-    title:"Freshers Test Metrics",
+    title:"Freshers Test Metric",
     pieStartAngle:100,
   }
 
   const pythontestoptions = {
     legend:"none",
-    title:"Python Test Metrics",
+    title:"Python Test Metric",
     pieStartAngle:100,
   }
 
   const fullstactoptions ={
     legend:"none",
-    title:"Fullstack Test Metrics",
+    title:"Full Stack Test Metric",
     pieStartAngle:100,
   }
 
   const javaoptions= {
     legend:"none",
-    title:"Java Test Metrics",
+    title:"Java Test Metric",
     pieStartAngle:100,
   }
 
   const qaoptions = {
     legend:"none",
-    title:"QA Test Metrics",
+    title:"QA Test Metric",
     pieStartAngle:100,
   }
 
   const froentendFresheroprions= {
     legend:"none",
-    title:"FroentEndFresher Test Metrics",
+    title:"Front End Fresher Test Metric",
     pieStartAngle:100,
   }
 
   const fresherjunioroptions = {
     legend:"none",
-    title:"FresherJunior Test Metrics",
+    title:"Freshers Junior Test Metric",
     pieStartAngle:100,
   }
 
   const merndeveloperjunioroptions = {
     legend:"none",
-    title:"Mern Developer junior Test Metrics",
+    title:"MERN Developer Junior Test Metric",
     pieStartAngle:100,
   }
 
   const mernintermediateoprions = {
     legend:"none",
-    title:"Mern Developer junior Test Metrics",
+    title:"MERN Developer Intermediate Test Metric",
     pieStartAngle:100,
   }
 
   const shopifyoptions = {
     legend:"none",
-    title:"Shopify_Test Metric",
+    title:"Shopify Test Metric",
     pieStartAngle:100,
   }
 

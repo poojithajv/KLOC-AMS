@@ -802,44 +802,129 @@ useEffect(()=>{
       <div>
         <p>
           {isSignedIn ? (
-            <div className="admin-header-container">
-            <div className="admin-header-logo-container">
-                    <img src="https://res.cloudinary.com/dufx8zalt/image/upload/v1687419355/logoimage1_krvkbq.png" alt="logo" style={{height:'50px', width:'100px', borderRadius:'10px'}} onClick={()=>navigate('/')}/>
-                    </div>
-                    <div className="admin-desktop-header-navbar-container">
-                    <p onClick={()=>navigate('/dashboard',{state:finalData})} className="admin-header-navbar-link">Dashboard</p>
-                    <p onClick={()=>navigate('/sendAssessments',{state:finalData})} className="admin-header-navbar-link">Assessments</p>
-                    <p onClick={()=>navigate('/testReports',{state:finalData})} className="admin-header-navbar-link">Test Reports</p>
-                    <p onClick={()=>navigate('/studentReports',{state:finalData})} className="admin-header-navbar-link">Student Reports</p>
-                    <p className="admin-header-login" onClick={handleSignOut}>Sign Out</p>
-                      </div>
-                      <div className="admin-mobile-header-navbar-container">
-                      <Popup trigger={<button  className="admin-hamburger-btn"><GiHamburgerMenu /></button>} position="bottom" >
-                    <div className="admin-mobile-hamburger-menu-container">
-                    <ul className="admin-mobile-hamburger-menu">
-                      <li onClick={()=>navigate('/dashboard',{state:finalData})} className='admin-header-navbar-link'>Dashboard</li>
-                      <li onClick={()=>navigate('/sendAssessments',{state:finalData})} className='admin-header-navbar-link'>Assessments</li>
-                      <li onClick={()=>navigate('/testReports',{state:finalData})} className='admin-header-navbar-link'>Test Resports</li>
-                      <li onClick={()=>navigate('/studentReports',{state:finalData})} className='admin-header-navbar-link'>Student Resports</li>
-                      <li onClick={handleSignOut} className="admin-header-login">Sign Out</li>
-                      </ul>
-                      </div>
-        </Popup>
-                      </div>
-              </div>
-          ) : (
-            // if admin hasn't signedIn, the below code will render
-            <div className='display-column'>
-              <h2>Login With Google</h2>
-              {/* if admin clicks this button, he can sign in into his account and get access for all routes */}
-              <button onClick={handleSignIn} className='google-signin-button'>
+            // if admin has signedIn, the below code will render
+            <div className='admin-header-container'>
+              {/* header for desktop  with Logo and components Dashboard, Assessments, Test Reports, Student Reports and Sign Out */}
+              <div className='admin-header-logo-container'>
+                {/* logo */}
                 <img
-                  src='https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg'
-                  alt='Google Logo'
+                  src='https://res.cloudinary.com/dufx8zalt/image/upload/v1687419355/logoimage1_krvkbq.png'
+                  alt='logo'
+                  style={{
+                    height: "50px",
+                    width: "100px",
+                    borderRadius: "10px",
+                  }}
+                  onClick={() => navigate("/")}
                 />
-                Sign In with Google
-              </button>
+              </div>
+              <div className='admin-desktop-header-navbar-container'>
+                {/* when clicking this Dashboard text, it'll navigates to dashboard route */}
+                <p
+                  onClick={() => navigate("/dashboard", { state: finalData })}
+                  className='admin-desktop-header-navbar-link'
+                >
+                  Dashboard
+                </p>
+                {/* when clicking this Assessments text, it'll navigates to send assessments route */}
+                <p
+                  onClick={() =>
+                    navigate("/sendAssessments", { state: finalData })
+                  }
+                  className='admin-desktop-header-navbar-link'
+                >
+                  Assessments
+                </p>
+                {/* when clicking this Test Reports text, it'll navigates to test reports route */}
+                <p
+                  onClick={() => navigate("/testReports", { state: finalData })}
+                  className='admin-desktop-header-navbar-link'
+                >
+                  Test Reports
+                </p>
+                {/* when clicking this student reports text, it'll navigates to student reports route */}
+                <p
+                  onClick={() =>
+                    navigate("/studentReports", { state: finalData })
+                  }
+                  className='admin-desktop-header-navbar-link'
+                >
+                  Student Reports
+                </p>
+                {/* when clicking this Sign Out text, it'll navigates to admin login route and agains admin needs to sign in to access all routes */}
+                <p
+                  className='admin-desktop-header-navbar-link'
+                  onClick={handleSignOut}
+                >
+                  Sign Out
+                </p>
+              </div>
+              <div className='admin-mobile-header-navbar-container'>
+                <Popup
+                  contentStyle={{ width: "50%", backgroundColor: "white" }}
+                  trigger={
+                    <button className='admin-hamburger-btn'>
+                      <GiHamburgerMenu />
+                    </button>
+                  }
+                  position='bottom right'
+                >
+                  <ul className='admin-mobile-hamburger-menu'>
+                    <li
+                      onClick={() =>
+                        navigate("/dashboard", { state: finalData })
+                      }
+                      className='admin-header-navbar-link'
+                    >
+                      Dashboard
+                    </li>
+                    <li
+                      onClick={() =>
+                        navigate("/sendAssessments", { state: finalData })
+                      }
+                      className='admin-header-navbar-link'
+                    >
+                      Assessments
+                    </li>
+                    <li
+                      onClick={() =>
+                        navigate("/testReports", { state: finalData })
+                      }
+                      className='admin-header-navbar-link'
+                    >
+                      Test Resports
+                    </li>
+                    <li
+                      onClick={() =>
+                        navigate("/studentReports", { state: finalData })
+                      }
+                      className='admin-header-navbar-link'
+                    >
+                      Student Resports
+                    </li>
+                    <li
+                      onClick={handleSignOut}
+                      className='admin-header-navbar-link'
+                    >
+                      Sign Out
+                    </li>
+                  </ul>
+                </Popup>
+              </div>
             </div>
+          ) : (
+             // if admin hasn't signedIn, the below code will render
+             <div className='display-column'>
+             <h2>Login With Google</h2>
+             {/* if admin clicks this button, he can sign in into his account and get access for all routes */}
+             <button onClick={handleSignIn} className='google-signin-button'>
+               <img
+                 src='https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg'
+                 alt='Google Logo'
+               />
+               Sign In with Google
+             </button>
+           </div>
           )}
         </p>
       </div>

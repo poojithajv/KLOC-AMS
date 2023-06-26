@@ -1,20 +1,23 @@
 // this component about  metrics for every test
 import React, { useEffect,useState } from "react";
+<<<<<<< HEAD
 // import Navbar from "./Navbar";
 // import { PieChart, Pie, Cell, Tooltip, Legend } from "recharts"
+=======
+>>>>>>> 79bbc5a50fb671a4e98e2bc75892384dc1c1cc62
 import { useNavigate ,useLocation} from "react-router-dom";
 import { Chart } from "react-google-charts";
 import Cookies from "js-cookie";
 import {GiHamburgerMenu} from "react-icons/gi"
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
-
 import './index.css'
-import { Legend } from "recharts";
+
 const Dashboard = () => {
   const location=useLocation()
   const navigate = useNavigate();
   const [finalData,setFinalData]=useState(location.state)
+<<<<<<< HEAD
   
   
 
@@ -34,6 +37,19 @@ const Dashboard = () => {
   const java=data.javaData.length //  number of Java tests taken
 
   // this pieData for designing the piechart of all tests taken by candidate(java,fullstack,qa,shopify,fresher,froentendFresher,fresherjunior,mernintermediate,mernJunior test,python)
+=======
+  const data=finalData.datat
+  const fresher=data.fresherData.length
+  const freshersJunior=data.freshersJuniorData.length
+  const python=data.pythonData.length
+  const frontendfresher=data.frontEndFresherData.length
+  const qa=data.qaData.length
+  const merndeveloperintermediate=data.mernDeveloperIntermediateData.length
+  const merndeveloperjunior=data.mernDeveloperJuniorData.length
+  const shopify=data.shopifyData.length
+  const fullStack=data.fullStackData.length
+  const java=data.javaData.length
+>>>>>>> 79bbc5a50fb671a4e98e2bc75892384dc1c1cc62
   const pieData=[
     ["Language", "Speakers (in millions)"],
     ['Fresher_Junior_Test',freshersJunior],
@@ -47,6 +63,7 @@ const Dashboard = () => {
     ['Mern_Developer_Junior_Test',merndeveloperjunior],
     ['Shopify_Test',shopify]
   ]
+<<<<<<< HEAD
 
       let freshers_aptitude_score  = 0 //  this variable stores the data ,aptitudescore who took freshertest
       let freshers_technical_score = 0  //his variable stores the data ,technical score who took freshertest
@@ -54,13 +71,17 @@ const Dashboard = () => {
       let freshers_technical_percentage=0 //this variable stores the data , percentage of technical score who took freshertest
 
     // this calculation for correct reponses by the candidate in fresher test
+=======
+  
+    let freshers_aptitude_score  = 0 
+    let freshers_technical_score = 0 
+    let freshers_aptitude_percentage=0
+    let freshers_technical_percentage=0
+>>>>>>> 79bbc5a50fb671a4e98e2bc75892384dc1c1cc62
     data.fresherData.map((item,index)=>{
      freshers_aptitude_score+=item.aptitude_score
      freshers_technical_score+=item.technical_score
-   })
-
-
-
+    })
    freshers_aptitude_percentage=freshers_aptitude_score/data.fresherData.length/ process.env.REACT_APP_FRESHER_TEST_APTITUDE_QUESTIONS*100
    freshers_technical_percentage=freshers_technical_score/(data.fresherData.length*process.env.REACT_APP_FRESHER_TEST_TECHNICAL_QUESTIONS)*100
   
@@ -87,7 +108,6 @@ const Dashboard = () => {
       shopify_aptitude_score+=item.aptitude_score
       shopify_technical_score+=item.technical_score
     })
-    console.log(shopify_technical_score)
     shopify_aptitude_percentage=shopify_aptitude_score/data.shopifyData.length/process.env.REACT_APP_SHOPIFY_TEST_APTITUDE_QUESTIONS*100
     shopify_technical_percentage=shopify_technical_score/data.shopifyData.length/process.env.REACT_APP_SHOPIFY_TEST_TECHNICAL_QUESTIONS*100
 
@@ -101,7 +121,6 @@ const Dashboard = () => {
       fullStack_java_score+=item.fullstack_java_score
       fullStack_react_score+=item.fullstack_react_score
     })
-
     fullStack_java_percentage=fullStack_java_score/data.fullStackData.length/process.env.REACT_APP_FULL_STACK_TEST_JAVA_QUESTIONS*100
     fullStack_react_percentage=fullStack_react_score/data.fullStackData.length/process.env.REACT_APP_FULL_STACK_TEST_REACT_QUESTIONS*100
   
@@ -117,7 +136,6 @@ const Dashboard = () => {
       java_aptitude_score+=item.aptitude_score
       java_technical_score+=item.technical_score
     })
-
     java_aptitude_percentage=java_aptitude_score/data.javaData.length/process.env.REACT_APP_JAVA_TEST_APTITUDE_QUESTIONS*100
     java_technical_percentage=java_technical_score/data.javaData.length/process.env.REACT_APP_JAVA_TEST_TECHNICAL_QUESTIONS*100
     
@@ -190,7 +208,6 @@ data.mernDeveloperJuniorData.map((item,index)=>{
       merndeveloperjunior_aptitude_score+=item.aptitude_score
       merndeveloperjunior_technical_score+=item.technical_score
     })
-
     merndeveloperjunior_aptitude_percentage=merndeveloperjunior_aptitude_score/data.mernDeveloperJuniorData.length/process.env.REACT_APP_MERN_DEVELOPER_JUNIOR_TEST_APTITUDE_QUESTIONS*100
     merndeveloperjunior_technical_percentage=merndeveloperjunior_technical_score/data.mernDeveloperJuniorData.length/process.env.REACT_APP_MERN_DEVELOPER_JUNIOR_TEST_TECHNICAL_QUESTIONS*100
     
@@ -265,118 +282,162 @@ data.mernDeveloperJuniorData.map((item,index)=>{
       navigate("/notFound");
     }
   }, []);
+
   const options = {
    legend:"none",
     title:"All Tests Metrics",
     pieStartAngle: 100,
   };
+
   const fresheroptions = {
     legend:"none",
     title:"Freshers Test Metrics",
     pieStartAngle:100,
   }
+
   const pythontestoptions = {
     legend:"none",
     title:"Python Test Metrics",
     pieStartAngle:100,
   }
+
   const fullstactoptions ={
     legend:"none",
     title:"Fullstack Test Metrics",
     pieStartAngle:100,
   }
+
   const javaoptions= {
     legend:"none",
     title:"Java Test Metrics",
     pieStartAngle:100,
   }
+
   const qaoptions = {
     legend:"none",
     title:"QA Test Metrics",
     pieStartAngle:100,
   }
+
   const froentendFresheroprions= {
     legend:"none",
     title:"FroentEndFresher Test Metrics",
     pieStartAngle:100,
   }
+
   const fresherjunioroptions = {
     legend:"none",
     title:"FresherJunior Test Metrics",
     pieStartAngle:100,
   }
+
   const merndeveloperjunioroptions = {
     legend:"none",
     title:"Mern Developer junior Test Metrics",
     pieStartAngle:100,
   }
+
   const mernintermediateoprions = {
     legend:"none",
     title:"Mern Developer junior Test Metrics",
     pieStartAngle:100,
   }
+
   const shopifyoptions = {
     legend:"none",
     title:"Shopify_Test Metric",
     pieStartAngle:100,
   }
+
   return (
     <>
+    {/* header for desktop  with Logo and components Dashboard, Assessments, Test Reports, Student Reports and Admin */}
       <div className="admin-header-container">
-      <div className="admin-header-logo-container">
-              <img src="https://res.cloudinary.com/dufx8zalt/image/upload/v1687419355/logoimage1_krvkbq.png" alt="logo" style={{height:'50px', width:'100px', borderRadius:'10px'}} onClick={()=>navigate('/')}/>
-              </div>
-              <div className="admin-desktop-header-navbar-container">
-              <p onClick={()=>navigate('/dashboard',{state:finalData})} className="admin-header-navbar-link">Dashboard</p>
-              <p onClick={()=>navigate('/sendAssessments',{state:finalData})} className="admin-header-navbar-link">Assessments</p>
-              <p onClick={()=>navigate('/testReports',{state:finalData})} className="admin-header-navbar-link">Test Reports</p>
-              <p onClick={()=>navigate('/studentReports',{state:finalData})} className="admin-header-navbar-link">Student Reports</p>
-              <p className="admin-header-login" onClick={()=> navigate('/adminLogin')}>Admin</p>
-                </div>
-                <div className="admin-mobile-header-navbar-container">
-                <Popup trigger={<button  className="admin-hamburger-btn"><GiHamburgerMenu /></button>} position="bottom" >
-              <div className="admin-mobile-hamburger-menu-container">
-              <ul className="admin-mobile-hamburger-menu">
-                <li onClick={()=>navigate('/dashboard',{state:finalData})} className='admin-header-navbar-link'>Dashboard</li>
-                <li onClick={()=>navigate('/sendAssessments',{state:finalData})} className='admin-header-navbar-link'>Assessments</li>
-                <li onClick={()=>navigate('/testReports',{state:finalData})} className='admin-header-navbar-link'>Test Resports</li>
-                <li onClick={()=>navigate('/studentReports',{state:finalData})} className='admin-header-navbar-link'>Student Resports</li>
-                <li onClick={()=> navigate('/adminLogin')} className="admin-header-login">Admin</li>
-                </ul>
-                </div>
-  </Popup>
-                </div>
+        <div className="admin-header-logo-container">
+          {/* logo */}
+          <img src="https://res.cloudinary.com/dufx8zalt/image/upload/v1687419355/logoimage1_krvkbq.png" alt="logo" style={{height:'50px', width:'100px', borderRadius:'10px'}} onClick={()=>navigate('/')}/>
         </div>
+        <div className="admin-desktop-header-navbar-container">
+          {/* when clicking this Dashboard text, it'll navigates to dashboard route */}
+          <p onClick={()=>navigate('/dashboard',{state:finalData})} className="admin-desktop-header-navbar-link">Dashboard</p>
+          {/* when clicking this Assessments text, it'll navigates to send assessments route */}
+          <p onClick={()=>navigate('/sendAssessments',{state:finalData})} className="admin-desktop-header-navbar-link">Assessments</p>
+          {/* when clicking this Test Reports text, it'll navigates to test reports route */}
+          <p onClick={()=>navigate('/testReports',{state:finalData})} className="admin-desktop-header-navbar-link">Test Reports</p>
+          {/* when clicking this student reports text, it'll navigates to student reports route */}
+          <p onClick={()=>navigate('/studentReports',{state:finalData})} className="admin-desktop-header-navbar-link">Student Reports</p>
+          {/* when clicking this Sign Out text, it'll navigates to admin login route and again admin can access all routes */}
+          <p className="admin-desktop-header-navbar-link" onClick={()=> navigate('/adminLogin')}>Admin</p>
+        </div>
+        {/* nav header for mobile  with Logo and components Dashboard, Assessments, Test Reports, Student Reports and Admin */}
+        <div className="admin-mobile-header-navbar-container">
+          <Popup contentStyle={{ width: '50%',backgroundColor:"white" }} trigger={<button  className="admin-hamburger-btn"><GiHamburgerMenu /></button>} position="bottom right" >
+            <ul className="admin-mobile-hamburger-menu">
+              {/* when clicking this Dashboard text, it'll navigates to dashboard route */}
+              <li onClick={()=>navigate('/dashboard',{state:finalData})} className='admin-header-navbar-link'>Dashboard</li>
+              {/* when clicking this Assessments text, it'll navigates to send assessments route */}
+              <li onClick={()=>navigate('/sendAssessments',{state:finalData})} className='admin-header-navbar-link'>Assessments</li>
+              {/* when clicking this Test Reports text, it'll navigates to test reports route */}
+              <li onClick={()=>navigate('/testReports',{state:finalData})} className='admin-header-navbar-link'>Test Reports</li>
+              {/* when clicking this student reports text, it'll navigates to student reports route */}
+              <li onClick={()=>navigate('/studentReports',{state:finalData})} className='admin-header-navbar-link'>Student Reports</li>
+              {/* when clicking this Sign Out text, it'll navigates to admin login route and again admin can access all routes */}
+              <li onClick={()=> navigate('/adminLogin')} className='admin-header-navbar-link'>Admin</li>
+            </ul>
+          </Popup>
+        </div>
+      </div>
       <div style={{display:"flex",flexDirection:"Column"}}>
         <h1 style={{textAlign:"center",marginBottom:'20px',"@media (max-width:820px)":{
           textAlign:"left",marginLeft:"20px"
         } }}>AMS METRICS</h1>
-       <h2 className="allmetricsHeadining">This metrics all about number of Tests taken by candidate for each test </h2>
-        <div>
-        <button style={{height:"20px",width:"40px",backgroundColor:"#e89510",border:"0px"}}></button>
-       <span>Python</span>
-      <button style={{height:"20px",width:"40px",backgroundColor:"#e62e81",border:"0px"}}></button>
-        <span>Java</span>
-        <button style={{height:"20px",width:"40px",backgroundColor:"#5c9ed1",border:"0px"}}></button>
-        <span>FullStack</span>
-        <button style={{height:"20px",width:"40px",backgroundColor:"#963596",border:"0px"}}></button>
-        <span>QA</span>
-        <button style={{height:"20px",width:"40px",backgroundColor:"#2b8a3c ",border:"0px"}}></button>
-        <span>Froentend fresher</span>
-        <button style={{height:"20px",width:"40px",backgroundColor:"#0e3ab3",border:"0px"}}></button>
-        <span>Fresher Junior</span>
-        <button style={{height:"20px",width:"40px",backgroundColor:"#f05232 ",border:"0px"}}></button>
-        <span>Fresher Test</span>
-        <button style={{height:"20px",width:"40px",backgroundColor:"#62b027",border:"0px"}}></button> 
-        <span>Mern Intermediate</span>
-        <button style={{height:"20px",width:"40px",backgroundColor:"#b02709",border:"0px"}}></button>   
-        <span>Mern Junior</span>
-        <button style={{height:"20px",width:"40px",backgroundColor:"#102061",border:"0px"}}></button>
-        <span>Shopify</span>
-        <button  className="totaltestconductedbutton" style={{backgroundColor:"#5c93d1",color:"wheat", fontSize:"20px", fontFamily:"roboto", marginLeft:"100px" , border:"none",height:"50px"}}>TotalTestsConducted:{fresher+fullStack+python+freshersJunior+frontendfresher+qa+java+shopify+merndeveloperintermediate+merndeveloperjunior}</button>
-
-            </div>
-       
+       <h2 className="allmetricsHeading">Below Metric is about number of tests taken by student for each test in percentage</h2>
+          <div className="piechart-details">
+        <div className="test-legend">
+        <button className='color' ></button>
+        <span className='test'>Python Test</span>
+        </div>
+        <div className="test-legend">
+        <button style={{backgroundColor:"#e62e81"}} className='color'></button>
+        <span className='test'>Java Test</span>
+        </div>
+        <div className="test-legend">
+        <button style={{backgroundColor:"#5c9ed1"}} className='color'></button>
+        <span className='test'>FullStack Test</span>
+        </div>
+        <div className="test-legend">
+        <button className='color' style={{backgroundColor:"#963596"}}></button>
+        <span className='test'>QA Test</span>
+        </div>
+        <div className="test-legend">
+        <button className='color' style={{backgroundColor:"#2b8a3c"}}></button>
+        <span className='test'>Frontend Fresher Test</span>
+        </div>
+        <div className="test-legend">
+        <button className='color' style={{backgroundColor:"#0e3ab3"}}></button>
+        <span className='test'>Freshers Junior Test</span>
+        </div>
+        <div className="test-legend">
+        <button className='color' style={{backgroundColor:"#f05232"}}></button>
+        <span className='test'>Freshers Test</span>
+        </div>
+        <div className="test-legend">
+        <button className='color' style={{backgroundColor:"#62b027"}}></button> 
+        <span className='test'>MERN Developer Intermediate Test</span>
+        </div>
+        <div className="test-legend">
+        <button className='color' style={{backgroundColor:"#b02709"}}></button>   
+        <span className='test'>MERN Developer Junior Test</span>
+        </div>
+        <div className="test-legend">
+        <button className='color' style={{backgroundColor:"#102061"}}></button>
+        <span className='test'>Shopify Developer Test</span>
+        </div>
+        </div>
+        <div style={{textAlign:'center'}}>
+        <button  className="totaltestconductedbutton" >Total Tests Conducted:{fresher+fullStack+python+freshersJunior+frontendfresher+qa+java+shopify+merndeveloperintermediate+merndeveloperjunior}</button>
+        </div>
+       <div className="test-chart">
         <Chart
         className="allstremsPiechart"
         chartType="PieChart"
@@ -386,25 +447,32 @@ data.mernDeveloperJuniorData.map((item,index)=>{
           title:"All Test Metrics",legend:"none"
         }}
       ></Chart>
-      
+      </div>
         </div>
-        <h3 className="allmetricsHeadining">This metrics  about percentage of every section which are correctly answered by candidate </h3>
-
-       <div>
-       <button style={{backgroundColor:"#aed25d" ,height:"20px",width:"40px",border:"none"}}></button>
-       <span>Apptitude</span> 
-       <button style={{backgroundColor:"#6f6fed" ,height:"20px",width:"40px",border:"none",marginLeft:"10px"}}></button>
-        <span>Technical</span>
-        <button style={{backgroundColor:"#9f93ed" ,height:"20px",width:"40px",border:"none",marginLeft:"10px"}}></button>
-        <span>Reasoing</span>
-        <button style={{backgroundColor:"#468f0a" ,height:"20px",width:"40px",border:"none",marginLeft:"10px"}}></button>
-        <span>Java</span>
-        <button style={{backgroundColor:"#4d71bd" ,height:"20px",width:"40px",border:"none",marginLeft:"10px"}}></button>
-        <span>React</span>
+        <h3 className="allmetricsHeading">Below Metrics are about percentage of each section which are correctly answered by students of different tests</h3>
+        <div className="piechart-details">
+        <div className="test-legend">
+       <button className='color' style={{backgroundColor:"#aed25d"}}></button>
+       <span className='test'>Aptitude</span> 
+       </div>
+       <div className="test-legend">
+       <button className='color' style={{backgroundColor:"#6f6fed" }}></button>
+        <span className='test'>Technical</span>
+        </div>
+        <div className="test-legend">
+        <button className='color' style={{backgroundColor:"#9f93ed"}}></button>
+        <span className='test'>Reasoing</span>
+        </div>
+        <div className="test-legend">
+        <button className='color' style={{backgroundColor:"#468f0a"}}></button>
+        <span className='test'>Java</span>
+        </div>
+        <div className="test-legend">
+        <button className='color' style={{backgroundColor:"#4d71bd"}}></button>
+        <span className='test'>React</span>
+        </div>
        </div>
         <div className="dashboard_chart_container">
-       
-
        <Chart 
        className="testwisePiechart"
         chartType="PieChart"
@@ -437,8 +505,6 @@ data.mernDeveloperJuniorData.map((item,index)=>{
           legend:"none"
         }}       
       /> 
-      {/* </div> */}
-      {/* <div className="dashboard_chart_container"> */}
       <Chart
         className="testwisePiechart"
         chartType="PieChart"
@@ -471,10 +537,6 @@ data.mernDeveloperJuniorData.map((item,index)=>{
           legend:"none"
         }}        
       />
-   
-      {/* </div>
-    
-      <div style={{display:'flex',alignItems:"center",flexWrap:"wrap"}}> */}
 
       <Chart
              className="testwisePiechart"
@@ -506,8 +568,6 @@ data.mernDeveloperJuniorData.map((item,index)=>{
           legend:"none"
         }}        
       />
-      {/* </div>
-     <div> */}
      <Chart     
       className="testwisePiechart"
         chartType="PieChart"

@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import TestContext from "./TestContext";
+// import all required packages, components here to render this app component
+import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AdminLogin from "./components/Admin/AdminLogin";
 import TestReports from "./components/Admin/TestReports";
@@ -32,14 +32,8 @@ import StudentReports from "./components/Admin/StudentReports";
 import Chart from './components/Admin/Chart'
 
 const App = () => {
-  const [reports, setReports] = useState([]);
-
-  const addToReports = (item) => {
-    setReports(item);
-  };
 
   return (
-    <TestContext.Provider value={{ reports, addToReports }}>
       <BrowserRouter>
         <Routes>
           {/* Home component */}
@@ -50,11 +44,7 @@ const App = () => {
           <Route path='/studentReports' element={<StudentReports />} />
           <Route path='/dashboard' element={<Dashboard />} />
           <Route path='/sendAssessments' element={<SendAssessments />} />
-
-          {/* student components */}
-          <Route path='/studentLogin' element={<StudentLogin />} />
-
-          {/* tabulation navigation */}
+          {/* test tabulation components*/}
           <Route path='testReports/freshers_junior_test' element={<FreshersJuniorTabulation />}/>
           <Route path='testReports/fresher_test' element={<FreshersTabulation />} />
           <Route path='testReports/fresher_qa_test' element={<QATabulation />} />
@@ -75,10 +65,13 @@ const App = () => {
             element={<MernDeveloperIntermediateTabulation />}
           />
           <Route path='/notFound' element={<NotFound />} />
-          {/* Chart */}
+          {/* PieChart component */}
           <Route path='/studentChart' element={<Chart />} />
 
-          {/* test navigation */}
+
+          {/* student components */}
+          <Route path='/studentLogin' element={<StudentLogin />} />
+          {/* tests components */}
           <Route path='/freshers-junior-test' element={<FreshersJuniorTest />} />
           <Route path='/fresher-test' element={<FresherTests />} />
           <Route path='/fresher-qa-test' element={<FresherQATest />} />
@@ -100,7 +93,6 @@ const App = () => {
           />
         </Routes>
       </BrowserRouter>
-    </TestContext.Provider>
   );
 };
 

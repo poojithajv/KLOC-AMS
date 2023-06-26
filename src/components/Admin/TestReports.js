@@ -1,23 +1,29 @@
+// import all required packages like react, react-icons, reactjs-popup, @mui/material, react-router-dom, js-cookie to render the TestReports component
 import React, { useEffect,useState } from "react";
 import {GiHamburgerMenu} from "react-icons/gi"
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
+<<<<<<< HEAD
 // import Navbar from "./Navbar";
+=======
+>>>>>>> 79bbc5a50fb671a4e98e2bc75892384dc1c1cc62
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea, Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { gapi } from "gapi-script";
 import {useLocation} from 'react-router-dom'
 import Cookies from "js-cookie";
+import './AdminLogin.css'
 
 const TestReports = () => {
+  // location varaiable to get location of the testReports route and state
   const location=useLocation()
     const [data,setData]=useState(location.state)
+    // navigate variable used to naviagating to different routes
   const navigate = useNavigate();
-  console.log(data.datat)
+  // created testDetails array that consists of all tests objects with keys name, id, url and data responses object
   const testDetails = [
     {
       name: "QA Test",
@@ -80,9 +86,12 @@ const TestReports = () => {
       data:data.datat.freshersJuniorData
     }
   ];
-
+ 
+  // after component rendering, the below effect will run only once with empty dependency array
   useEffect(() => {
+    // token varaible to get token value
     const token = Cookies.get("token");
+    // if token is undefined, notFound Component will be navigated
     if (!token) {
       navigate("/notFound");
     }
@@ -90,33 +99,45 @@ const TestReports = () => {
 
   return (
     <div>
+      {/* header for desktop  with Logo and components Dashboard, Assessments, Test Reports, Student Reports and Admin */}
       <div className="admin-header-container">
-      <div className="admin-header-logo-container">
-              <img src="https://res.cloudinary.com/dufx8zalt/image/upload/v1687419355/logoimage1_krvkbq.png" alt="logo" style={{height:'50px', width:'100px', borderRadius:'10px'}} onClick={()=>navigate('/')}/>
-              </div>
-              <div className="admin-desktop-header-navbar-container">
-              <p onClick={()=>navigate('/dashboard',{state:data})} className="admin-header-navbar-link">Dashboard</p>
-              <p onClick={()=>navigate('/sendAssessments',{state:data})} className="admin-header-navbar-link">Assessments</p>
-              <p onClick={()=>navigate('/testReports',{state:data})} className="admin-header-navbar-link">Test Reports</p>
-              <p onClick={()=>navigate('/studentReports',{state:data})} className="admin-header-navbar-link">Student Reports</p>
-              <p className="admin-header-login" onClick={()=> navigate('/adminLogin')}>Admin</p>
-                </div>
-                <div className="admin-mobile-header-navbar-container">
-                <Popup trigger={<button  className="admin-hamburger-btn"><GiHamburgerMenu /></button>} position="bottom" >
-              <div className="admin-mobile-hamburger-menu-container">
-              <ul className="admin-mobile-hamburger-menu">
-                <li onClick={()=>navigate('/dashboard',{state:data})} className='admin-header-navbar-link'>Dashboard</li>
-                <li onClick={()=>navigate('/sendAssessments',{state:data})} className='admin-header-navbar-link'>Assessments</li>
-                <li onClick={()=>navigate('/testReports',{state:data})} className='admin-header-navbar-link'>Test Resports</li>
-                <li onClick={()=>navigate('/studentReports',{state:data})} className='admin-header-navbar-link'>Student Resports</li>
-                <li onClick={()=> navigate('/adminLogin')} className="admin-header-login">Admin</li>
-                </ul>
-                </div>
-  </Popup>
-                </div>
+        <div className="admin-header-logo-container">
+        {/* logo */}
+          <img src="https://res.cloudinary.com/dufx8zalt/image/upload/v1687419355/logoimage1_krvkbq.png" alt="logo" style={{height:'50px', width:'100px', borderRadius:'10px'}} onClick={()=>navigate('/')}/>
         </div>
+        <div className="admin-desktop-header-navbar-container">
+          {/* when clicking this Dashboard text, it'll navigates to dashboard route */}
+          <p onClick={()=>navigate('/dashboard',{state:data})} className="admin-desktop-header-navbar-link">Dashboard</p>
+          {/* when clicking this Assessments text, it'll navigates to send assessments route */}
+          <p onClick={()=>navigate('/sendAssessments',{state:data})} className="admin-desktop-header-navbar-link">Assessments</p>
+          {/* when clicking this Test Reports text, it'll navigates to test reports route */}
+          <p onClick={()=>navigate('/testReports',{state:data})} className="admin-desktop-header-navbar-link">Test Reports</p>
+          {/* when clicking this student reports text, it'll navigates to student reports route */}
+          <p onClick={()=>navigate('/studentReports',{state:data})} className="admin-desktop-header-navbar-link">Student Reports</p>
+          {/* when clicking this Sign Out text, it'll navigates to admin login route and again admin can access all routes */}
+          <p className="admin-desktop-header-navbar-link" onClick={()=> navigate('/adminLogin')}>Admin</p>
+        </div>
+        {/* nav header for mobile  with Logo and components Dashboard, Assessments, Test Reports, Student Reports and Admin */}
+        <div className="admin-mobile-header-navbar-container">
+          <Popup contentStyle={{ width: '50%',backgroundColor:"white" }} trigger={<button  className="admin-hamburger-btn"><GiHamburgerMenu /></button>} position="bottom right" >
+            <ul className="admin-mobile-hamburger-menu">
+              {/* when clicking this Dashboard text, it'll navigates to dashboard route */}
+              <li onClick={()=>navigate('/dashboard',{state:data})} className='admin-header-navbar-link'>Dashboard</li>
+              {/* when clicking this Assessments text, it'll navigates to send assessments route */} 
+              <li onClick={()=>navigate('/sendAssessments',{state:data})} className='admin-header-navbar-link'>Assessments</li>
+              {/* when clicking this Test Reports text, it'll navigates to test reports route */}
+              <li onClick={()=>navigate('/testReports',{state:data})} className='admin-header-navbar-link'>Test Reports</li>
+              {/* when clicking this student reports text, it'll navigates to student reports route */}
+              <li onClick={()=>navigate('/studentReports',{state:data})} className='admin-header-navbar-link'>Student Reports</li>
+              {/* when clicking this Sign Out text, it'll navigates to admin login route and again admin can access all routes */}
+              <li onClick={()=> navigate('/adminLogin')} className='admin-header-navbar-link'>Admin</li>
+            </ul>
+         </Popup>
+        </div>
+      </div>
       <div>
         <h1 style={{textAlign:'center'}}>Test Reports</h1>
+        {/* all tests cards */}
         <div className='test-container'>
           {testDetails.map((each, index) => {
             return (
@@ -137,6 +158,7 @@ const TestReports = () => {
                 <Button
                   sx={{ margin: "20px" }}
                   variant='contained'
+                  // clicking view button it'll navigates to respective test tabulation routes
                   onClick={() =>
                     navigate(`/testReports/${each.id}`, { state: each.data })
                   }
